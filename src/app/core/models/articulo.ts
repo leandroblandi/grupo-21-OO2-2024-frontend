@@ -1,4 +1,4 @@
-interface Articulo {
+export default interface Articulo {
   idArticulo: number;
   descripcion: string;
   costo: number;

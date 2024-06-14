@@ -1,4 +1,6 @@
-interface LoteArticulo{
+import Articulo from "./articulo";
+
+export default interface LoteArticulo{
     idLote: number;
     articulo: Articulo;
     cantidad: number;

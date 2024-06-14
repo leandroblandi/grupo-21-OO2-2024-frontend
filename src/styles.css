@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  font-size: 40px;
+}
+
+h3, h4 {
+  font-size: 30px;
+}
+
+h5, h6 {
+  font-size: 25px;
+}
+
+p, label, input, button {
+  font-size: 30px;
+  color: #222;
+}
+
+label {
+  font-weight: 600;
+  color: #444;
+}
+
+div a {
+  color: #65136e;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+div a:hover {
+  text-decoration: underline;
+}
+
+body {
+  background: #efefef;
+}

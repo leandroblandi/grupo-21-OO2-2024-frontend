@@ -1,15 +1,26 @@
 <div class="container">
-  <div class="login-form">
-    <div class="form-control">
-      <label for="username">Nombre de usuario</label>
-      <input type="username" name="username">
+  <div class="login-container">
+    <div class="login-header">
+      <h2>Ingreso</h2>
+      <p class="sub">Para disfrutar de todo lo que HASTOCK te provee, debes identificarte</p>
     </div>
-    <div class="form-control">
-      <label for="password">Contraseña</label>
-      <input type="password" name="password">
-    </div>
-    <div class="form-control">
-      <button type="button">Iniciar sesión</button>
+    <div class="login-form">
+      <div class="form-control">
+        <label class="label" for="username">Nombre de usuario</label>
+        <input [(ngModel)]="usuario" type="username" placeholder="jperez" name="username">
+        <div class="underline"></div>
+      </div>
+      <div class="form-control">
+        <label class="label" for="password">Contraseña</label>
+        <input [(ngModel)]="clave" type="password" placeholder="******" name="password">
+        <div class="underline"></div>
+      </div>
+      <div class="login-info">
+        <p>¿No tenés una cuenta? <a routerLink="/registrarse">Registrate</a></p>
+      </div>
+      <div class="form-control">
+        <button type="button" (click)="attemptLogin()">Iniciar sesión</button>
+      </div>
     </div>
   </div>
 </div>

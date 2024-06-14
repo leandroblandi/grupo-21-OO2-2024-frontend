@@ -5,34 +5,43 @@ import { AltaLoteComponent } from './components/alta-lote/alta-lote.component';
 import { ListadoArticulosComponent } from './components/listado-articulos/listado-articulos.component';
 import { AltaArticuloComponent } from './components/alta-articulo/alta-articulo.component';
 import { ListadoClientesComponent } from './components/listado-clientes/listado-clientes.component';
+import { AuthGuard } from './core/guards/auth.guard';
+import { LoginGuard } from './core/guards/login.guard';
 
 export const routes: Routes = [
   {
     path: "",
-    component: LoginComponent
+    pathMatch: "full",
+    redirectTo: "iniciar-sesion"
   },
   {
     path: "iniciar-sesion",
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: "lotes",
-    component: ListadoLotesComponent
+    component: ListadoLotesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "alta-lote",
-    component: AltaLoteComponent
+    component: AltaLoteComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "articulos",
-    component: ListadoArticulosComponent
+    component: ListadoArticulosComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "alta-articulo",
-    component: AltaArticuloComponent
+    component: AltaArticuloComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "clientes",
-    component: ListadoClientesComponent
+    component: ListadoClientesComponent,
+    canActivate: [AuthGuard]
   }
 ];

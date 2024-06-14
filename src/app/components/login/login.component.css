@@ -1,0 +1,67 @@
+.container {
+  width: 100%;
+}
+
+.login-container {
+  margin: 20px auto;
+  width: 30%;
+  background: #fff;
+  padding: 35px 30px;
+}
+
+.login-container .login-header h2 {
+  color: #1e6eca;
+}
+
+.login-header p.sub {
+  margin-top: 10px;
+  display: block;
+  width: 90%;
+  font-size: 22px;
+  font-weight: 600;
+  color: #777;
+}
+
+.login-container .login-form .form-control {
+  width: 100%;
+  margin: 25px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-control .label {
+  font-size: 22px;
+}
+
+.form-control input {
+  margin-top: 5px;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  outline: 0 none;
+  padding-left: 5px;
+  font-size: 25px;
+  height: 45px;
+  color: #888;
+}
+
+.form-control button {
+  height: 55px;
+  width: 100%;
+  background: #1e6eca;
+  border: none;
+  font-size: 20px;
+  padding: 10px 15px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.form-control button:hover {
+  background: #144a88;
+}
+
+.login-info p {
+  color: #888;
+  font-size: 20px;
+}

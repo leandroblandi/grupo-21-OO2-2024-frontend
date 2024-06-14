@@ -1,1 +1,22 @@
-<p>listado-articulos works!</p>
+<div class="listado-articulos-container">
+  @for (articulo of articulos; track $index) {
+    <div class="articulo-item">
+      <div class="articulo-header">
+        <img src="./assets/product.png" alt="Product icon">
+      </div>
+      <div class="articulo-body">
+        <sub>ID de art. #{{articulo.idArticulo}}</sub>
+        <h6>{{articulo.descripcion}}</h6>
+        <div class="costo-section">
+          @if(rol.authority === "ROLE_ADMINISTRADOR") {
+            <p>Costo: U$S {{articulo.costo}}</p>
+          }
+          <p>U$S {{articulo.precioVenta}}</p>
+        </div>
+        <div class="comprar-section">
+          <button class="buy-button">Comprar</button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

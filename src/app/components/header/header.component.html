@@ -1,14 +1,32 @@
 <div class="header-container">
   <div class="header-brand">
-    <h1>SCI</h1>
+    <a routerLink="">
+      <img src="./assets/logo-app.svg" alt="Hastock logo">
+    </a>
   </div>
+  @if(authenticated) {
+    <div class="header-menu">
+      <ul>
+        @if(rol.authority === "ROLE_ADMINISTRADOR") {
+          <li><a routerLink="/lotes">Lotes</a></li>
+          <li><a routerLink="/alta-lote">Generar lote</a></li>
+          <li><a routerLink="/alta-articulo">Alta articulo</a></li>
+          <li><a routerLink="/clientes">Clientes</a></li>
+        }
+        <li><a routerLink="/articulos">Articulos</a></li>
+      </ul>
+    </div>
+    <div class="user-section">
+      Iniciaste sesión como
+      <br>
+      {{ username }}
+      <button (click)="logout()">Cerrar sesión</button>
+    </div>
+  }
   <div class="header-menu">
     <ul>
-      <li><a routerLink="/lotes">Lotes</a></li>
-      <li><a routerLink="/alta-lote">Generar lote</a></li>
-      <li><a routerLink="/articulos">Articulos</a></li>
-      <li><a routerLink="/alta-articulo">Alta articulo</a></li>
-      <li><a routerLink="/clientes">Clientes</a></li>
+        <li><a routerLink="/iniciar-sesion">Iniciar sesión</a></li>
+        <li><a routerLink="/iniciar-sesion">Registrarse</a></li>
     </ul>
   </div>
 </div>
