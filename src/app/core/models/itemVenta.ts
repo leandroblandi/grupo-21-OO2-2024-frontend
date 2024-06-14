@@ -1,4 +1,4 @@
-interface itemVenta{
+interface ItemVenta{
     idItem: number;
     articulo: Articulo;
     cantidad: number;
