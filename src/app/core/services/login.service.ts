@@ -11,13 +11,14 @@ import Usuario from '../models/usuario';
   providedIn: 'root'
 })
 export class LoginService {
+  url: string = environment.url;
+  prefix: string = environment.prefix;
+  loginUrl: string = environment.login;
+  usuarios: string = environment.usuarios;
 
-  private url: string = environment.url;
-  private prefix: string = environment.prefix;
-  private loginUrl: string = environment.login;
-  private usuarios: string = environment.usuarios;
-
-  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {
+  constructor(
+    private http: HttpClient, 
+    private jwtHelper: JwtHelperService) {
   }
   
   login(usuario: string, clave: string): Observable<TokenReponse> {

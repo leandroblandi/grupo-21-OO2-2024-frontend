@@ -20,8 +20,10 @@ export class ArticuloService {
   }
 
   crearArticulo(descripcion : string, costo: number, precioVenta:number): Observable<Articulo>{
-    let articuloDto={
-      descripcion: descripcion, costo:costo, precioVenta:precioVenta
+    let articuloDto = {
+      descripcion: descripcion, 
+      costo: costo, 
+      precioVenta: precioVenta
     }
     return this.http.post<Articulo>(this.url + this.prefix + this.articulos,articuloDto);
   }

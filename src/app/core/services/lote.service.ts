@@ -9,7 +9,6 @@ import LoteArticulo from '../models/loteArticulo';
   providedIn: 'root'
 })
 export class LoteService {
-
   url: string = environment.url;
   prefix: string = environment.prefix;
   lotes: string = environment.lotes;
@@ -21,8 +20,12 @@ export class LoteService {
   }
 
   crearLote(idArticulo: number, cantidad:number, precioCompra:number , proveedor: string, costo:number): Observable<LoteArticulo>{
-    let loteDto={
-      idArticulo: idArticulo, cantidad:cantidad, precioCompra:precioCompra, proveedor:proveedor, costo:costo
+    let loteDto = {
+      idArticulo: idArticulo, 
+      cantidad: cantidad, 
+      precioCompra: precioCompra, 
+      proveedor: proveedor, 
+      costo: costo
     }
     return this.http.post<LoteArticulo>(this.url + this.prefix + this.lotes,loteDto);
   }
