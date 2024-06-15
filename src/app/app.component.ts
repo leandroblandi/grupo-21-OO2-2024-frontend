@@ -11,5 +11,5 @@ import { HeaderComponent } from './components/header/header.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'tpc-oo2-sci-frontend';
+  title = 'HASTOCK';
 }

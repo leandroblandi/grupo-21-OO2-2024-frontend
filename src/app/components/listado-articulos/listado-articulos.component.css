@@ -1,3 +1,25 @@
+.empty-state-div {
+  padding: 30px 20px;
+  background: #fff;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.empty-state-div img {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.empty-state-div p {
+  font-weight: 600;
+  color: #555;
+}
+
 .listado-articulos-container {
   margin: 0 auto;
   display: flex;
@@ -21,7 +43,7 @@
   margin: 10px;
   border-radius: 3px;
   user-select: none;
-  height: 370px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
 }
@@ -63,7 +85,17 @@
   width: 100%;
 }
 
-.comprar-section sub {
+.envio-section {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.comprar-section .envio-section i {
+  margin-right: 5px;
+}
+
+.comprar-section .envio-section sub, .comprar-section .envio-section i {
   color: #47883d;
   font-weight: 600;
 }
@@ -90,4 +122,40 @@ button.buy-button:hover {
 sub {
   font-weight: 600;
   color: #666;
+}
+
+.editar-articulo-section button {
+  width: 100%;
+  margin: 10px 0 5px;
+  background: #ddd;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 2px;
+  font-weight: 600;
+  color:#555;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.editar-articulo-section button:hover {
+  background: #bbb;
+}
+
+.eliminar-articulo-section button {
+  width: 100%;
+  margin: 10px 0 5px;
+  background: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 2px;
+  font-weight: 600;
+  color:#e12626;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.eliminar-articulo-section button:hover {
+  background: #ddd;
 }

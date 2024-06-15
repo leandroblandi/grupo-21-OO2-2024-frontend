@@ -42,6 +42,8 @@ export class LoginComponent {
           }
         }
       }); 
+    } else {
+      this.toast.warning("Te faltan completar datos", "¡Cuidado!");
     }
   }
 

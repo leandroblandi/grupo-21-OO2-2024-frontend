@@ -30,7 +30,7 @@ export class LoteService {
     return this.http.post<LoteArticulo>(this.url + this.prefix + this.lotes,loteDto);
   }
 
-  eliminarLote(id:number): Observable<LoteArticulo>{
-    return this.http.delete<LoteArticulo>(this.url + this.prefix + this.lotes + "/"+ id);
+  eliminarLote(id:number): Observable<Boolean>{
+    return this.http.delete<Boolean>(this.url + this.prefix + this.lotes + "/"+ id);
   }
 }

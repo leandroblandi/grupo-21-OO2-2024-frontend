@@ -1,0 +1,179 @@
+.empty-state-div {
+  padding: 30px 20px;
+  background: #fff;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.empty-state-div img {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.empty-state-div p {
+  font-weight: 600;
+  color: #555;
+}
+
+.listado-lotes-container {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.listado-header {
+  margin: 20px 5px 15px;
+  width: 100%;
+}
+
+.listado-header p {
+  font-weight: 600;
+  color: #777;
+}
+
+.lote-item {
+  width: 300px;
+  background: #fff;
+  margin: 10px;
+  border-radius: 3px;
+  user-select: none;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.lote-item .lote-header {
+  background: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+.lote-header img {
+  height: 120px;
+  -webkit-user-drag: none;
+}
+
+.lote-item .lote-body {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px;
+  flex-grow: 1;
+}
+
+.lote-item .lote-body .descripcion-lote {
+  overflow: hidden;
+}
+
+.lote-item .lote-body .descripcion-lote h6 {
+  font-size: 22px;
+  text-overflow: clip;
+}
+
+.lote-body p {
+  font-size: 20px;
+}
+
+.aprovisionar-section {
+  margin-top: auto;
+  width: 100%;
+}
+
+.aprovisionar-section sub {
+  color: #bf3f3f;
+  font-weight: 600;
+}
+
+button.aprovisionar-button {
+  width: 100%;
+  margin: 10px 0 5px;
+  background: #1e6eca;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 2px;
+  font-weight: 600;
+  color:#ffffff;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button.aprovisionar-button-disabled {
+  width: 100%;
+  margin: 10px 0 5px;
+  background: #6390c2;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 2px;
+  font-weight: 600;
+  color:#ffffff;
+  border-radius: 3px;
+  cursor: not-allowed;
+}
+
+p span {
+  font-weight: 600;
+  color: #666;
+}
+
+button.aprovisionar-button-disabled:hover {
+  background: #39618f;
+}
+
+button.aprovisionar-button:hover {
+  background: #1859a4;
+}
+ 
+
+sub {
+  font-weight: 600;
+  color: #666;
+}
+
+.lote-item .lote-body .aprovisionar-section sub.stock-suficiente {
+  font-weight: 600;
+  color: #3c783e;
+}
+
+.editar-lote-section button {
+  width: 100%;
+  margin: 10px 0 5px;
+  background: #ddd;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 2px;
+  font-weight: 600;
+  color:#555;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.editar-lote-section button:hover {
+  background: #ccc;
+}
+
+.eliminar-lote-section button {
+  width: 100%;
+  margin: 10px 0 5px;
+  background: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 2px;
+  font-weight: 600;
+  color:#db1f1f;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.eliminar-lote-section button:hover {
+  background: #ddd;
+}

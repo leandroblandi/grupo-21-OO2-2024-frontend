@@ -1,3 +1,25 @@
+.empty-state-div {
+  padding: 30px 20px;
+  background: #fff;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.empty-state-div img {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.empty-state-div p {
+  font-weight: 600;
+  color: #555;
+}
+
 .listado-clientes-container {
   margin: 0 auto;
   display: flex;
@@ -32,17 +54,20 @@ th, td {
 }
 
 th {
-  background-color: #1e6eca;
+  background-color: #4993e8;
   color: #fff;
-  font-weight: bold;
+  font-weight: 600;
+  height: 70px;
+}
+
+tr {
+  font-weight: 600;
+  color: #444;
+  background: #fff;
 }
 
 tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-tr:hover {
-  background-color: #f1f1f1;
+  background-color: #d5e5f7;
 }
 
 .fila-usuario td {
@@ -61,4 +86,19 @@ tr:hover {
 .fila-usuario .dni,
 .fila-usuario .usuario {
   color: #666;
+}
+
+td.accion button {
+  border: none;
+  background: #d8ab3f;
+  color: #7b5c14;
+  font-size: 14px;
+  padding: 5px 20px;
+  border-radius: 2px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+td.accion button:hover {
+  background: #b99136;
 }

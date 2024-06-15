@@ -1,0 +1,16 @@
+.alta-lote-container {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.alta-lote-header {
+  margin: 20px 5px 30px;
+  width: 100%;
+}
+
+.alta-lote-header p {
+  font-weight: 600;
+  color: #777;
+}

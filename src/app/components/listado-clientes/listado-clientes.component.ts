@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ListadoClientesComponent implements OnInit {
 
   usuarios: Usuario[] = [];
+  ningunUsuarioActivo: boolean = true;
   
   constructor(
     private usuarioService: UsuarioService,
@@ -21,6 +22,7 @@ export class ListadoClientesComponent implements OnInit {
 
   ngOnInit() {
     this.getUsuarios();
+    this.actualizarListClientes();
   }
 
   getUsuarios(): void {
@@ -37,5 +39,16 @@ export class ListadoClientesComponent implements OnInit {
 
   filtrarClientes(usuarios: Usuario[]) {
     return usuarios.filter((usuario: any) => usuario.rol.rol == "ROLE_CLIENTE");
+  }
+
+  actualizarListClientes(): void {
+    let algunUsuarioActivo: boolean = false;
+    
+    for(let usuario of this.usuarios) {
+      if(usuario.activo) {
+        algunUsuarioActivo = true;
+      }
+    }
+    this.ningunUsuarioActivo = !algunUsuarioActivo;
   }
 }

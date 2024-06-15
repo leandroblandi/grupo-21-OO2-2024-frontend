@@ -48,6 +48,8 @@ export class RegisterComponent {
             }
           }
         });
+    } else {
+      this.toast.warning("Te faltan completar datos", "¡Cuidado!");
     }
   }
 

@@ -3,26 +3,39 @@
     <h2>Clientes</h2>
     <p>A continuación, verás un listado con los clientes que realizan compras recuerrentemente</p>
   </div>
-  <div class="grilla-clientes">
-    <table>
-      <thead>
-        <th>#</th>
-        <th>Apellidos</th>
-        <th>Nombres</th>
-        <th>DNI</th>
-        <th>Nombre de usuario</th>
-      </thead>
-      <tbody>
-        @for (usuario of usuarios; track $index) {
-          <tr class="fila-usuario">
-            <td class="id-usuario">{{usuario.idUsuario}}</td>
-            <td class="apellidos">{{usuario.apellido}}</td>
-            <td class="nombres">{{usuario.nombre}}</td>
-            <td class="dni">{{usuario.dni}}</td>
-            <td class="usuario">{{usuario.usuario}}</td>
-          </tr>
-        }
-      </tbody>
-    </table>
-  </div>
+  @if(usuarios.length == 0 || ningunUsuarioActivo) {
+    <div class="empty-state-div">
+      <img src="./assets/empty_state.png" alt="No hay elementos en la base de datos">
+      <p>¡Nada por aquí! Prueba a dar de alta algún cliente</p>
+    </div>
+  } @else {
+    <div class="grilla-clientes">
+      <table>
+        <thead>
+          <th>#</th>
+          <th>Apellidos</th>
+          <th>Nombres</th>
+          <th>DNI</th>
+          <th>Nombre de usuario</th>
+          <th>Acción</th>
+        </thead>
+        <tbody>
+          @for (usuario of usuarios; track $index) {
+            @if(usuario.activo) {
+              <tr class="fila-usuario">
+                <td class="id-usuario">{{usuario.idUsuario}}</td>
+                <td class="apellidos">{{usuario.apellido}}</td>
+                <td class="nombres">{{usuario.nombre}}</td>
+                <td class="dni">{{usuario.dni}}</td>
+                <td class="usuario">{{usuario.usuario}}</td>
+                <td class="accion">
+                  <button class="eliminar-cliente">Eliminar</button>
+                </td>
+              </tr>
+            }
+          }
+        </tbody>
+      </table>
+    </div>
+  }
 </div>

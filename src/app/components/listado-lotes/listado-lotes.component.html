@@ -1,1 +1,48 @@
-<p>listado-lotes works!</p>
+<div class="listado-lotes-container">
+  <div class="listado-header">
+    <h2>Lotes de artículos</h2>
+    <p>Echa un vistazo a los artículos disponibles y sus cantidades</p>
+  </div>
+  @if(lotes.length == 0) {
+    <div class="empty-state-div">
+      <img src="./assets/empty_state.png" alt="No hay elementos en la base de datos">
+      <p>¡Nada por aquí! Prueba a cargar algunos lotes</p>
+    </div>
+  } 
+  @else {
+    @for (lote of lotes; track $index) {
+      <div class="lote-item">
+        <div class="lote-header">
+          <img src="./assets/lote-logo.svg" alt="Product icon">
+        </div>
+        <div class="lote-body">
+          <sub>ID de lote: #{{lote.idLote}}</sub>
+          <div class="descripcion-lote">
+            <h6>Lote: {{lote.articulo.descripcion}}</h6>
+            <p><span>Valor total:</span> {{lote.precioCompra | currency: 'USD': 'symbol' }}</p>
+            <p><span>Stock disponible:</span> {{lote.cantidad}} u.</p>
+            <p><span>Fecha de recepción:</span> {{lote.fechaRecepcion | date: 'dd/MM/yyyy hh:MM'}}</p>
+          </div>
+          @if(lote.cantidad < 200) {
+            <div class="aprovisionar-section">
+              <sub>Queda poco stock</sub>
+              <button class="aprovisionar-button">Aprovisionar</button>
+            </div>
+          } @else {
+            <div class="aprovisionar-section">
+              <sub class="stock-suficiente">Stock disponible</sub>
+              <button disabled class="aprovisionar-button-disabled">Aprovisionar</button>
+            </div>
+          } @if (rol.authority == "ROLE_ADMINISTRADOR") {
+            <div class="editar-lote-section">
+              <button>Editar</button>
+            </div>
+            <div class="eliminar-lote-section">
+              <button (click)="eliminarLote(lote.idLote)">Eliminar</button>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  }
+</div>

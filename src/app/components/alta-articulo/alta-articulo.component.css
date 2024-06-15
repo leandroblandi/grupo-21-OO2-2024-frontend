@@ -1,0 +1,16 @@
+.alta-articulo-container {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.alta-articulo-header {
+  margin: 20px 5px 30px;
+  width: 100%;
+}
+
+.alta-articulo-header p {
+  font-weight: 600;
+  color: #777;
+}

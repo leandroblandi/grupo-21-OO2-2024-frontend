@@ -20,7 +20,10 @@
       Iniciaste sesión como
       <br>
       {{ username }}
-      <button (click)="logout()">Cerrar sesión</button>
+      <button (click)="logout()">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Salir
+      </button>
     </div>
   } @else {
     <div class="header-menu">
