@@ -7,6 +7,7 @@ import { AltaArticuloComponent } from './components/alta-articulo/alta-articulo.
 import { ListadoClientesComponent } from './components/listado-clientes/listado-clientes.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { LoginGuard } from './core/guards/login.guard';
+import { RegisterComponent } from './components/register/register.component';
 
 export const routes: Routes = [
   {
@@ -17,6 +18,11 @@ export const routes: Routes = [
   {
     path: "iniciar-sesion",
     component: LoginComponent,
+    canActivate: [LoginGuard]
+  },
+  {
+    path: "registrarse",
+    component: RegisterComponent,
     canActivate: [LoginGuard]
   },
   {

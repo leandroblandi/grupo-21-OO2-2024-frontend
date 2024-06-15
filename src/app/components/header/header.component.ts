@@ -42,4 +42,8 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  refresh() {
+    this.authenticated = this.loginService.isAuthenticated();
+    this.getUserData();
+  }
 }

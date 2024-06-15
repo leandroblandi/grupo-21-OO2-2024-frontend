@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="login-container">
+    <div class="login-header">
+      <h2>Registro</h2>
+      <p class="sub">Para disfrutar de todo lo que la app te provee, debes registrarte</p>
+    </div>
+    <div class="login-form">
+      <div class="form-control">
+        <label class="label" for="username">Nombres</label>
+        <input [(ngModel)]="nombres" type="text" placeholder="Juan" name="fullname">
+        <div class="underline"></div>
+      </div>
+      <div class="form-control">
+        <label class="label" for="username">Apellidos</label>
+        <input [(ngModel)]="apellidos" type="text" placeholder="Pérez" name="lastname">
+        <div class="underline"></div>
+      </div>
+      <div class="form-control">
+        <label class="label" for="username">DNI</label>
+        <sub>Sin guiones ni puntos</sub>
+        <input [(ngModel)]="documento" type="number" placeholder="88.888.888" name="document">
+        <div class="underline"></div>
+      </div>
+      <div class="form-control">
+        <label class="label" for="username">Nombre de usuario</label>
+        <input [(ngModel)]="usuario" type="text" placeholder="jperez" name="username">
+        <div class="underline"></div>
+      </div>
+      <div class="form-control">
+        <label class="label" for="password">Contraseña</label>
+        <input [(ngModel)]="clave" type="password" placeholder="•••••••••" name="password">
+        <div class="underline"></div>
+      </div>
+      <div class="login-info">
+        <p>¿Ya tenés una cuenta? <a routerLink="/iniciar-sesion">Iniciar sesión</a></p>
+      </div>
+      <div class="form-control">
+        <button type="button" (click)="attemptRegister()">Registrarse</button>
+      </div>
+    </div>
+  </div>
+</div>

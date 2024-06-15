@@ -8,12 +8,12 @@
     <div class="header-menu">
       <ul>
         @if(rol.authority === "ROLE_ADMINISTRADOR") {
-          <li><a routerLink="/lotes">Lotes</a></li>
-          <li><a routerLink="/alta-lote">Generar lote</a></li>
-          <li><a routerLink="/alta-articulo">Alta articulo</a></li>
-          <li><a routerLink="/clientes">Clientes</a></li>
+          <li><a routerLink="/lotes" routerLinkActive="active-link">Lotes</a></li>
+          <li><a routerLink="/alta-lote" routerLinkActive="active-link">Generar lote</a></li>
+          <li><a routerLink="/alta-articulo" routerLinkActive="active-link">Alta articulo</a></li>
+          <li><a routerLink="/clientes" routerLinkActive="active-link">Clientes</a></li>
         }
-        <li><a routerLink="/articulos">Articulos</a></li>
+        <li><a routerLink="/articulos" routerLinkActive="active-link">Articulos</a></li>
       </ul>
     </div>
     <div class="user-section">
@@ -22,12 +22,13 @@
       {{ username }}
       <button (click)="logout()">Cerrar sesión</button>
     </div>
+  } @else {
+    <div class="header-menu">
+      <ul>
+          <li><a routerLink="/iniciar-sesion" routerLinkActive="active-link">Iniciar sesión</a></li>
+          <li><a routerLink="/registrarse" routerLinkActive="active-link">Registrarse</a></li>
+      </ul>
+    </div>
   }
-  <div class="header-menu">
-    <ul>
-        <li><a routerLink="/iniciar-sesion">Iniciar sesión</a></li>
-        <li><a routerLink="/iniciar-sesion">Registrarse</a></li>
-    </ul>
-  </div>
 </div>
 <router-outlet></router-outlet>

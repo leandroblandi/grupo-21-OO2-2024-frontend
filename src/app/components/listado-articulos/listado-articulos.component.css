@@ -5,10 +5,25 @@
   width: 80%;
 }
 
+.listado-header {
+  margin: 20px 5px 30px;
+  width: 100%;
+}
+
+.listado-header p {
+  font-weight: 600;
+  color: #777;
+}
+
 .articulo-item {
   width: 300px;
   background: #fff;
   margin: 10px;
+  border-radius: 3px;
+  user-select: none;
+  height: 370px;
+  display: flex;
+  flex-direction: column;
 }
 
 .articulo-item .articulo-header {
@@ -19,14 +34,24 @@
   padding: 20px 0;
 }
 
+.articulo-header img {
+  -webkit-user-drag: none;
+}
+
 .articulo-item .articulo-body {
   display: flex;
   flex-direction: column;
   padding: 20px 30px;
+  flex-grow: 1;
 }
 
-.articulo-item .articulo-body h6 {
+.articulo-item .articulo-body .descripcion-articulo {
+  overflow: hidden;
+}
+
+.articulo-item .articulo-body .descripcion-articulo h6 {
   font-size: 22px;
+  text-overflow: clip;
 }
 
 .articulo-body p {
@@ -35,15 +60,17 @@
 
 .comprar-section {
   margin-top: auto;
-  display: flex;
   width: 100%;
-  justify-content: center;
-  align-self: flex-end;
+}
+
+.comprar-section sub {
+  color: #47883d;
+  font-weight: 600;
 }
 
 button.buy-button {
-  width: 80%;
-  margin: 20px 0 5px;
+  width: 100%;
+  margin: 10px 0 5px;
   background: #fac649;
   border: none;
   padding: 10px 15px;
@@ -51,7 +78,14 @@ button.buy-button {
   border-radius: 2px;
   font-weight: 600;
   color:#815d0b;
+  border-radius: 3px;
+  cursor: pointer;
 }
+
+button.buy-button:hover {
+  background: #d1a53d;
+}
+
 
 sub {
   font-weight: 600;

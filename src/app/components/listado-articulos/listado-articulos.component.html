@@ -1,4 +1,8 @@
 <div class="listado-articulos-container">
+  <div class="listado-header">
+    <h2>Articulos disponibles</h2>
+    <p>Echa un vistazo a todos nuestros artículos disponibles para la venta</p>
+  </div>
   @for (articulo of articulos; track $index) {
     <div class="articulo-item">
       <div class="articulo-header">
@@ -6,14 +10,12 @@
       </div>
       <div class="articulo-body">
         <sub>ID de art. #{{articulo.idArticulo}}</sub>
-        <h6>{{articulo.descripcion}}</h6>
-        <div class="costo-section">
-          @if(rol.authority === "ROLE_ADMINISTRADOR") {
-            <p>Costo: U$S {{articulo.costo}}</p>
-          }
-          <p>U$S {{articulo.precioVenta}}</p>
+        <div class="descripcion-articulo">
+          <h6>{{articulo.descripcion}}</h6>
         </div>
         <div class="comprar-section">
+          <p>U$S {{articulo.precioVenta}}</p>
+          <sub>Envío gratis</sub>
           <button class="buy-button">Comprar</button>
         </div>
       </div>

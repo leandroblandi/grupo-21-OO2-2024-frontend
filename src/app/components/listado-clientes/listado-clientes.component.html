@@ -1,1 +1,28 @@
-<p>listado-clientes works!</p>
+<div class="listado-clientes-container">
+  <div class="listado-header">
+    <h2>Clientes</h2>
+    <p>A continuación, verás un listado con los clientes que realizan compras recuerrentemente</p>
+  </div>
+  <div class="grilla-clientes">
+    <table>
+      <thead>
+        <th>#</th>
+        <th>Apellidos</th>
+        <th>Nombres</th>
+        <th>DNI</th>
+        <th>Nombre de usuario</th>
+      </thead>
+      <tbody>
+        @for (usuario of usuarios; track $index) {
+          <tr class="fila-usuario">
+            <td class="id-usuario">{{usuario.idUsuario}}</td>
+            <td class="apellidos">{{usuario.apellido}}</td>
+            <td class="nombres">{{usuario.nombre}}</td>
+            <td class="dni">{{usuario.dni}}</td>
+            <td class="usuario">{{usuario.usuario}}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
