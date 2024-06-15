@@ -1,27 +1,37 @@
-# TpcOo2SciFrontend
+# Trabajo práctico cuatrimestral - Orientación a Objetos II
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+Este es un proyecto de Angular 17. A continuación, se detallan los pasos necesarios para levantar el proyecto por primera vez, así como algunas instrucciones útiles para el desarrollo y el despliegue.
 
-## Development server
+## Requisitos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Antes de empezar, asegúrate de tener instaladas las siguientes herramientas:
 
-## Code scaffolding
+- [Node.js](https://nodejs.org/) (Versión 20)
+- [Angular CLI](https://angular.io/cli) (Versión 17)
+- [Git](https://git-scm.com/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Instalación
 
-## Build
+1. **Clonar el repositorio**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+   Clona el repositorio en tu máquina local usando Git:
 
-## Running unit tests
+   ```bash
+   git clone https://github.com/leandroblandi/grupo-21-OO2-2024-frontend.git
+   ```
+2. Luego, navega al directorio del proyecto:
+    ```bash
+    cd grupo-21-OO2-2024-frontend
+    ```
+3. Instalar dependencias
+    Usa npm para instalar las dependencias del proyecto:
+    ```bash
+    npm install
+    ```
+4. Levantar el proyecto
+    Para levantar el proyecto en un entorno de desarrollo, ejecuta el siguiente comando:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    ```bash
+    npm start
+    ```
+El proyecto estará disponible en http://localhost:4200/.
