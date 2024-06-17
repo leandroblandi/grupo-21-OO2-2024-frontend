@@ -2,6 +2,15 @@
   <div class="listado-header">
     <h2>Articulos disponibles</h2>
     <p>Echa un vistazo a todos nuestros artículos disponibles para la venta</p>
+    
+    @if(rol.authority == "ROLE_ADMINISTRADOR") {
+      <div class="acciones-section">
+        <button class="nuevo-art" routerLink="/alta-articulo">
+          <i class="fa-solid fa-plus"></i>
+          Nuevo artículo
+        </button>
+      </div>
+    }
   </div>
   @if(articulos.length == 0 || ningunArticuloActivo) {
     <div class="empty-state-div">
@@ -26,10 +35,10 @@
                 <i class="fa-solid fa-truck-fast"></i>
                 <sub>Envío gratis</sub>
               </div>
-              <button class="buy-button">Comprar</button>
+              <button routerLink="/comprar/{{articulo.idArticulo}}" class="buy-button">Comprar</button>
               @if (rol.authority == "ROLE_ADMINISTRADOR") {
                 <div class="editar-articulo-section">
-                  <button>Editar</button>
+                  <button routerLink="/editar-articulo/{{articulo.idArticulo}}">Editar</button>
                 </div>
                 <div class="eliminar-articulo-section">
                   <button (click)="eliminarArticulo(articulo.idArticulo)">Eliminar</button>

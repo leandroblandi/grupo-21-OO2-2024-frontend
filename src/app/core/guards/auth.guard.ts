@@ -2,6 +2,7 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router} from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { ToastrService } from 'ngx-toastr';
+import { HeaderComponent } from '../../components/header/header.component';
 
 export const AuthGuard: CanActivateFn = (route, state) => {
 

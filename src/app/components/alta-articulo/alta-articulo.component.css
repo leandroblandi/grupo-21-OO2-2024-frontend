@@ -6,11 +6,98 @@
 }
 
 .alta-articulo-header {
-  margin: 20px 5px 30px;
+  margin: 20px 5px 10px;
   width: 100%;
 }
 
 .alta-articulo-header p {
   font-weight: 600;
   color: #777;
+}
+
+.alta-articulo-container .alta-articulo-form {
+  width: 30%;
+}
+
+.alta-articulo-container .alta-articulo-form .form-control {
+  width: 100%;
+  margin: 25px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-control .label {
+  font-size: 22px;
+  color: #666;
+}
+
+.form-control sub {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #87857e;
+}
+
+.form-control input {
+  margin-top: 5px;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  outline: 0 none;
+  padding-left: 15px;
+  font-size: 25px;
+  height: 45px;
+  color: #777;
+  font-weight: 300;
+}
+
+::placeholder {
+  color: #999;
+}
+
+.form-control button {
+  height: 55px;
+  width: 100%;
+  background: #1e6eca;
+  border: none;
+  font-size: 20px;
+  padding: 10px 15px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.form-control button:hover {
+  background: #144a88;
+}
+
+.login-info p {
+  color: #888;
+  font-size: 20px;
+}
+
+.advice-section {
+  width: 100%;
+  background: #d1ce72;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.advice-section sub, i {
+  font-weight: 600;
+  color: #563e12;
+  font-size: 18px;
+  padding: 5px 0 2px;
+}
+
+.advice-section .advice-header sub {
+  font-weight: bold;
+}
+
+.advice-section .advice-header {
+  display: flex;
+  align-items: center;
+}
+
+.advice-header i {
+  margin-right: 5px;
 }

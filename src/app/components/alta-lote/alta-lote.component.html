@@ -3,4 +3,28 @@
     <h2>Crear un nuevo lote</h2>
     <p>Sigue los pasos de abajo para dar de alta un nuevo lote</p>
   </div>
+  <div class="alta-lote-form">
+    <div class="form-control">
+      <label class="label" for="descripcion">Artículo</label>
+      <sub>Selecciona el artículo del lote a crear</sub>
+      <select name="id-articulo" [(ngModel)]="idArticulo">
+        @for (articulo of articulos; track $index) {
+          <option value="{{articulo.idArticulo}}">{{articulo.descripcion}}</option>
+        }
+      </select>
+    </div>
+    <div class="form-control">
+      <label class="label" for="cantidad">Cantidad</label>
+      <sub>Ingresa la cantidad de articulos del lote</sub>
+      <input [(ngModel)]="cantidad" type="number" placeholder="150" name="cantidad" required>
+    </div>
+    <div class="form-control">
+      <label class="label" for="proveedor">Proveedor</label>
+      <sub>Ingresa el nombre/razón social</sub>
+      <input [(ngModel)]="proveedor" type="text" placeholder="iPhone Store Miami SRL" name="proveedor" required>
+    </div>
+    <div class="form-control">
+      <button type="button" (click)="crearLote()">Crear</button>
+    </div>
+  </div>
 </div>

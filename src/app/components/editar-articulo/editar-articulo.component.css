@@ -1,26 +1,25 @@
-.alta-lote-container {
+.editar-articulo-container {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   width: 80%;
 }
 
-.alta-lote-header {
+.editar-articulo-header {
   margin: 20px 5px 10px;
   width: 100%;
 }
 
-.alta-lote-header p {
+.editar-articulo-header p {
   font-weight: 600;
   color: #777;
 }
 
-
-.alta-lote-container .alta-lote-form {
+.editar-articulo-container .editar-articulo-form {
   width: 30%;
 }
 
-.alta-lote-container .alta-lote-form .form-control {
+.editar-articulo-container .editar-articulo-form .form-control {
   width: 100%;
   margin: 25px 0;
   display: flex;
@@ -38,7 +37,7 @@
   color: #87857e;
 }
 
-.form-control input, .form-control select {
+.form-control input {
   margin-top: 5px;
   border: 1px solid #bdbdbd;
   border-radius: 5px;
@@ -57,21 +56,48 @@
 .form-control button {
   height: 55px;
   width: 100%;
-  background: #1e6eca;
+  background: #d8ab3f;
   border: none;
   font-size: 20px;
   padding: 10px 15px;
-  color: #fff;
+  color: #554317;
   font-weight: 600;
   cursor: pointer;
   border-radius: 2px;
 }
 
 .form-control button:hover {
-  background: #144a88;
+  background: #ad8832;
 }
 
 .login-info p {
   color: #888;
   font-size: 20px;
+}
+
+.advice-section {
+  width: 100%;
+  background: #d1ce72;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.advice-section sub, i {
+  font-weight: 600;
+  color: #563e12;
+  font-size: 18px;
+  padding: 5px 0 2px;
+}
+
+.advice-section .advice-header sub {
+  font-weight: bold;
+}
+
+.advice-section .advice-header {
+  display: flex;
+  align-items: center;
+}
+
+.advice-header i {
+  margin-right: 5px;
 }

@@ -15,8 +15,9 @@ HttpHandlerFn) => {
   const loginUrl = environment.url + "/api/login";
 
   return next(req).pipe(catchError((err: HttpErrorResponse)=> {
-
-    if(err.status == 401 || (!auth.isAuthenticated() && req.url != loginUrl)) {
+    
+    if((err.status == 401 || !auth.isAuthenticated()) && req.url != loginUrl) {
+      console.log(req.url == loginUrl);
       toast.error("Tu token expiró", "¡Oops!");
       auth.logout();
       router.navigate(['/iniciar-sesion']);

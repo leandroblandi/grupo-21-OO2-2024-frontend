@@ -19,6 +19,10 @@ export class LoteService {
     return this.http.get<LoteArticulo[]>(this.url + this.prefix + this.lotes);
   }
 
+  aprovisionar(idArticulo: number, cantidad: number): Observable<LoteArticulo> {
+    return this.http.put<LoteArticulo>(this.url + this.prefix + this.lotes + "/articulo/" + idArticulo + "?cantidadRequerida=" + cantidad, null);
+  }
+
   crearLote(idArticulo: number, cantidad:number, precioCompra:number , proveedor: string, costo:number): Observable<LoteArticulo>{
     let loteDto = {
       idArticulo: idArticulo, 

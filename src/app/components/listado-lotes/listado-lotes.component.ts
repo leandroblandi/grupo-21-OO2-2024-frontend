@@ -5,15 +5,20 @@ import LoteArticulo from '../../core/models/loteArticulo';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { LoginService } from '../../core/services/login.service';
 import Rol from '../../core/models/rol';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-listado-lotes',
   standalone: true,
-  imports: [DatePipe, CurrencyPipe],
+  imports: [DatePipe, CurrencyPipe, RouterModule, FormsModule],
   templateUrl: './listado-lotes.component.html',
   styleUrl: './listado-lotes.component.css'
 })
 export class ListadoLotesComponent implements OnInit {
+  idArticuloLote: number = 0;
+  mostrarModalAprovisionamiento: boolean = false;
+  cantidadAprovisionar: number = 0;
   lotes: LoteArticulo[] = [];
   rol: Rol = {
     authority: "ROLE_CLIENTE"
@@ -39,6 +44,33 @@ export class ListadoLotesComponent implements OnInit {
         this.toast.error("Hubo un error al obtener los lotes de articulos", "¡Oops!");
       }
     })
+  }
+
+  abrirModal(lote: LoteArticulo): void {
+    this.idArticuloLote = lote.articulo.idArticulo;
+    this.mostrarModalAprovisionamiento = true;
+  }
+
+  closeModal(): void {
+    this.mostrarModalAprovisionamiento = false;
+  }
+
+  aprovisionar() {
+    if(this.idArticuloLote > 0
+      && this.cantidadAprovisionar > 0
+    ) {
+      this.loteService.aprovisionar(this.idArticuloLote, this.cantidadAprovisionar).subscribe({
+        next: (res) => {
+          this.toast.success("Pedido realizado exitosamente", "¡Genial!");
+          this.closeModal();
+          this.getLotes();
+        }, error: (err) => {
+          this.toast.error("Hubo un problema al realizar el pedido de aprovisionamiento", "¡Oops!");
+        }
+      });
+    } else {
+      this.toast.warning("Introduce una cantidad valida", "¡Cuidado!")
+    }
   }
 
   eliminarLote(id: number): void {

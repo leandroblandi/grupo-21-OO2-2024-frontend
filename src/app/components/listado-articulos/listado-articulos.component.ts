@@ -5,11 +5,12 @@ import { ToastrService } from 'ngx-toastr';
 import Rol from '../../core/models/rol';
 import { LoginService } from '../../core/services/login.service';
 import { CurrencyPipe } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-listado-articulos',
   standalone: true,
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, RouterModule],
   templateUrl: './listado-articulos.component.html',
   styleUrl: './listado-articulos.component.css'
 })
@@ -30,11 +31,12 @@ export class ListadoArticulosComponent implements OnInit {
     this.actualizarListArticulos();
     this.rol = this.loginService.getRolUsuario();
   }
-
+  
   getArticulos(): void {
     this.articuloService.getArticulos().subscribe({
       next: (res) => {
         this.articulos = res;
+        this.actualizarListArticulos();
       }, error: (err) => {
         this.toast.error("Hubo un error al obtener los articulos", "¡Oops!");
       }
@@ -63,6 +65,7 @@ export class ListadoArticulosComponent implements OnInit {
     for(let articulo of this.articulos) {
       if(articulo.activo) {
         algunArtActivo = true;
+        break;
       }
     }
     this.ningunArticuloActivo = !algunArtActivo;

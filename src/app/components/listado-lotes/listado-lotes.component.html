@@ -2,6 +2,15 @@
   <div class="listado-header">
     <h2>Lotes de artículos</h2>
     <p>Echa un vistazo a los artículos disponibles y sus cantidades</p>
+    
+    @if(rol.authority == "ROLE_ADMINISTRADOR") {
+      <div class="acciones-section">
+        <button class="nuevo-art" routerLink="/alta-lote">
+          <i class="fa-solid fa-plus"></i>
+          Nuevo lote
+        </button>
+      </div>
+    }
   </div>
   @if(lotes.length == 0) {
     <div class="empty-state-div">
@@ -26,7 +35,7 @@
           @if(lote.cantidad < 200) {
             <div class="aprovisionar-section">
               <sub>Queda poco stock</sub>
-              <button class="aprovisionar-button">Aprovisionar</button>
+              <button class="aprovisionar-button" (click)="abrirModal(lote)">Aprovisionar</button>
             </div>
           } @else {
             <div class="aprovisionar-section">
@@ -34,9 +43,6 @@
               <button disabled class="aprovisionar-button-disabled">Aprovisionar</button>
             </div>
           } @if (rol.authority == "ROLE_ADMINISTRADOR") {
-            <div class="editar-lote-section">
-              <button>Editar</button>
-            </div>
             <div class="eliminar-lote-section">
               <button (click)="eliminarLote(lote.idLote)">Eliminar</button>
             </div>
@@ -44,5 +50,32 @@
         </div>
       </div>
     }
+  }
+  @if(mostrarModalAprovisionamiento) {
+    <div class="aprovisionamiento-modal">
+      <div class="aprovisionamiento-section">
+        <div class="aprov-sect-header">
+          <div class="header">
+            <h4>Aprovisionar lote</h4>
+            <div class="close-button">
+              <button (click)="closeModal()">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+          <p>Estas a punto de realizar un pedido de aprovisionamiento para dicho lote. Por favor, verifica que todo esté bien</p>
+        </div>
+        <div class="aprov-sect-body">
+          <div class="form-control">
+            <label for="cantidad-aprovisionar">Cantidad</label>
+            <sub>Ingresa una cantidad razonable para pedir</sub>
+            <input type="number" [(ngModel)]="cantidadAprovisionar" name="cantidad-aprovisionar">
+          </div>
+          <div class="form-control">
+            <button (click)="aprovisionar()">Realizar pedido</button>
+          </div>
+        </div>
+      </div>
+    </div>
   }
 </div>

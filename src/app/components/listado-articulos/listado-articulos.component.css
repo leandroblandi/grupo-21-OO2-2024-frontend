@@ -37,6 +37,28 @@
   color: #777;
 }
 
+.acciones-section {
+  margin-top: 10px;
+}
+
+.listado-header .acciones-section button {
+  width: 150px;
+  margin: 10px 0 5px;
+  background: #1e6eca;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 2px;
+  font-weight: 600;
+  color:#fff;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.listado-header .acciones-section button:hover {
+  background: #185aa4;
+}
+
 .articulo-item {
   width: 300px;
   background: #fff;

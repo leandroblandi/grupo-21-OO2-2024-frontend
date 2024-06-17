@@ -30,6 +30,7 @@ export class ListadoClientesComponent implements OnInit {
       next: (res) => {
         console.log(res);
         this.usuarios = this.filtrarClientes(res);
+        this.actualizarListClientes();
       }, error: (err) => {
         console.log(err);
         this.toast.error("Hubo un error al obtener los clientes", "¡Oops!")

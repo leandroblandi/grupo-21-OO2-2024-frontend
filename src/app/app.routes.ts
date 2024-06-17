@@ -8,8 +8,14 @@ import { ListadoClientesComponent } from './components/listado-clientes/listado-
 import { AuthGuard } from './core/guards/auth.guard';
 import { LoginGuard } from './core/guards/login.guard';
 import { RegisterComponent } from './components/register/register.component';
+import { RoleGuard } from './core/guards/role.guard';
+import { EditarArticuloComponent } from './components/editar-articulo/editar-articulo.component';
+import { ComprarComponent } from './components/comprar/comprar.component';
+
+const rolAdministrador: string = "ROLE_ADMINISTRADOR";
 
 export const routes: Routes = [
+
   {
     path: "",
     pathMatch: "full",
@@ -28,12 +34,18 @@ export const routes: Routes = [
   {
     path: "lotes",
     component: ListadoLotesComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      rol: rolAdministrador
+    }
   },
   {
     path: "alta-lote",
     component: AltaLoteComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      rol: rolAdministrador
+    }
   },
   {
     path: "articulos",
@@ -43,11 +55,30 @@ export const routes: Routes = [
   {
     path: "alta-articulo",
     component: AltaArticuloComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      rol: rolAdministrador
+    }
+  },
+  {
+    path: "editar-articulo/:id",
+    component: EditarArticuloComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      rol: rolAdministrador
+    }
+  },
+  {
+    path: "comprar/:id",
+    component: ComprarComponent,
     canActivate: [AuthGuard]
   },
   {
     path: "clientes",
     component: ListadoClientesComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      rol: rolAdministrador
+    }
   }
 ];
