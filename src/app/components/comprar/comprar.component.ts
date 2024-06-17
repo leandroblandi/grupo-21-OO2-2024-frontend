@@ -76,6 +76,7 @@ export class ComprarComponent implements OnInit{
       let itemModificado = item;
       itemModificado.cantidad = itemModificado.cantidad + 1;
       this.itemsDto[indice] = itemModificado
+      this.sumaTotal += item.precio;
     }
   }
 
@@ -88,7 +89,9 @@ export class ComprarComponent implements OnInit{
       let itemModificado = item;
       itemModificado.cantidad = itemModificado.cantidad - 1;
       this.itemsDto[indice] = itemModificado
+      this.sumaTotal -= item.precio;
     }
+
   }
 
   realizarCompra() {
