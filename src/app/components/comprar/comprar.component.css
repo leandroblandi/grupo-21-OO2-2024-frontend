@@ -1,0 +1,134 @@
+.comprar-carrito-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.comprar-header {
+  margin: 20px 5px 10px;
+  width: 100%;
+}
+
+.comprar-header p {
+  font-weight: 600;
+  color: #777;
+}
+
+.item-section {
+  width: 80%;
+  padding: 20px 30px;
+  background: #fff;
+  margin: 20px 0;
+}
+
+.item-section h6 {
+  color: #555;
+  font-size: 22px;
+}
+
+.item-section {
+  display: flex;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.item-section .right-section,
+.item-section .left-section {
+  display: flex;
+  align-items: center;
+}
+
+.right-section p {
+  margin-right: 20px;
+  color: #777;
+  font-weight: 600;
+}
+
+.right-section button {
+  border: none;
+  margin: 0 10px;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.right-section p {
+  font-size: 22px;
+}
+
+button i {
+  font-size: 20px;
+}
+
+button.sumar-cant {
+  background: #1e6eca;
+  color: #fff;
+}
+
+button.sumar-cant:hover {
+  background: #1858a1;
+}
+
+button.restar-cant {
+  background: #fff;
+  color: #ff0000;
+}
+
+button.restar-cant:hover {
+  background: #f0f0f0;
+}
+
+div.items-section > div > div.right-section > sub {
+  font-weight: 600;
+  color: #ff0000;
+  display: block;
+  cursor: pointer;
+}
+
+.informacion-sobre-la-compra-section {
+  margin: 20px 0;
+  padding-left: 10px;
+}
+
+.compra-info-section {
+  width: 100%;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.compra-info-section i {
+  margin-right: 10px;
+}
+
+.compra-info-section sub, .compra-info-section i {
+  font-weight: 600;
+  font-size: 16px;
+  color: #36872d;
+}
+
+.confirmar-compra-section {
+  width: 100%;
+}
+
+.confirmar-compra-section button {
+  border: none;
+  margin: 0 10px;
+  padding: 5px 35px;
+  border-radius: 3px;
+  font-size: 22px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
+  background: #1e6eca;
+}
+
+.confirmar-compra-section button:hover {
+  background: #165296;
+}

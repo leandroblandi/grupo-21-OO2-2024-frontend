@@ -181,3 +181,13 @@ sub {
 .eliminar-articulo-section button:hover {
   background: #ddd;
 }
+
+.listado-header .acciones-section button.limpiar-carrito-btn {
+  margin-left: 10px;
+  background: transparent;
+  color: #e12626;
+}
+
+.listado-header .acciones-section button.limpiar-carrito-btn:hover {
+  background: #c0c0c0;
+}

@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './listado-articulos.component.css'
 })
 export class ListadoArticulosComponent implements OnInit {
+  carrito: number[] = [];
   ningunArticuloActivo: boolean = true;
   articulos: Articulo[] = [];
   rol: Rol = {
@@ -30,6 +31,13 @@ export class ListadoArticulosComponent implements OnInit {
     this.getArticulos();
     this.actualizarListArticulos();
     this.rol = this.loginService.getRolUsuario();
+    this.setearCarrito();
+  }
+
+  setearCarrito(): void {
+    if(localStorage.getItem("articulos_en_carrito")) {
+      this.carrito = JSON.parse(localStorage.getItem("articulos_en_carrito")!);
+    }
   }
   
   getArticulos(): void {
@@ -69,5 +77,25 @@ export class ListadoArticulosComponent implements OnInit {
       }
     }
     this.ningunArticuloActivo = !algunArtActivo;
+  }
+
+  agregarAlCarrito(articulo: Articulo) {
+    if(this.carrito.find(cadaId => cadaId == articulo.idArticulo) == undefined) {
+      this.carrito.push(articulo.idArticulo);
+      localStorage.setItem("articulos_en_carrito", JSON.stringify(this.carrito))
+      this.toast.success(`Agregaste "${articulo.descripcion} al carrito"`, "¡Listo!"); 
+    } else {
+      this.toast.warning("El carrito ya tiene ese item", "¡Cuidado!");
+    }
+  }
+
+  limpiarCarrito() {
+    this.carrito = [];
+    localStorage.removeItem("articulos_en_carrito");
+    this.toast.info("Carrito eliminado", "¡Listo!")
+  }
+
+  continuarAlCarrito() {
+    localStorage.setItem("articulos", JSON.stringify(this.articulos));
   }
 }

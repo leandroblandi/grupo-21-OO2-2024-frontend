@@ -69,7 +69,7 @@ export const routes: Routes = [
     }
   },
   {
-    path: "comprar/:id",
+    path: "carrito",
     component: ComprarComponent,
     canActivate: [AuthGuard]
   },

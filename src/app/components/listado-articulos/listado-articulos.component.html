@@ -11,6 +11,18 @@
         </button>
       </div>
     }
+    @if(rol.authority == "ROLE_CLIENTE" && carrito.length > 0) {
+      <div class="acciones-section">
+        <button class="nuevo-art" routerLink="/carrito" (click)="continuarAlCarrito()">
+          <i class="fa-solid fa-cart-shopping"></i>
+          En carrito ({{carrito.length}})
+        </button>
+        <button class="limpiar-carrito-btn" (click)="limpiarCarrito()">
+          <i class="fa-solid fa-cart-arrow-down"></i>
+          Eliminar carrito
+        </button>
+      </div>
+    }
   </div>
   @if(articulos.length == 0 || ningunArticuloActivo) {
     <div class="empty-state-div">
@@ -35,7 +47,10 @@
                 <i class="fa-solid fa-truck-fast"></i>
                 <sub>Envío gratis</sub>
               </div>
-              <button routerLink="/comprar/{{articulo.idArticulo}}" class="buy-button">Comprar</button>
+              <button (click)="agregarAlCarrito(articulo)" class="buy-button">
+                <i class="fa-solid fa-cart-plus"></i>
+                Agregar al carrito
+              </button>
               @if (rol.authority == "ROLE_ADMINISTRADOR") {
                 <div class="editar-articulo-section">
                   <button routerLink="/editar-articulo/{{articulo.idArticulo}}">Editar</button>
