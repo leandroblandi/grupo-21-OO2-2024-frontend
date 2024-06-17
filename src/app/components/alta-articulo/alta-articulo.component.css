@@ -1,3 +1,30 @@
+.volver-atras-section {
+  margin: 20px 5px 10px;
+}
+
+.volver-atras-section button {
+  padding: 5px 10px;
+  width: 100px;
+  font-size: 20px;
+  border: none;
+  background: #dadada;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.volver-atras-section button i,
+.volver-atras-section button {
+  font-weight: 600;
+  color: #555;
+}
+
+.volver-atras-section button:hover {
+  background: #d0d0d0;
+}
+
 .alta-articulo-container {
   margin: 0 auto;
   display: flex;
@@ -6,7 +33,7 @@
 }
 
 .alta-articulo-header {
-  margin: 20px 5px 10px;
+  margin: 0 5px 10px;
   width: 100%;
 }
 

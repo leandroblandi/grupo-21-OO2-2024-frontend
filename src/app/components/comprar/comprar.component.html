@@ -1,4 +1,10 @@
 <div class="comprar-carrito-container">
+  <div class="volver-atras-section">
+    <button routerLink="/articulos">
+      <i class="fa-solid fa-arrow-left"></i>
+      Volver
+    </button>
+  </div>
   <div class="comprar-header">
     <h2>Carrito</h2>
     <p>Para continuar con la compra, verifica que tanto las cantidades como los artículos estén bien</p>
@@ -37,7 +43,7 @@
     </div>
   </div>
   <div class="confirmar-compra-section">
-    <p></p>
+    <p class="total">{{sumaTotal | currency: "USD": "symbol"}}</p>
     <button (click)="realizarCompra()">Realizar compra</button>
   </div>
 </div>

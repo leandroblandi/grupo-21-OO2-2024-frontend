@@ -83,7 +83,7 @@ export class ListadoArticulosComponent implements OnInit {
     if(this.carrito.find(cadaId => cadaId == articulo.idArticulo) == undefined) {
       this.carrito.push(articulo.idArticulo);
       localStorage.setItem("articulos_en_carrito", JSON.stringify(this.carrito))
-      this.toast.success(`Agregaste "${articulo.descripcion} al carrito"`, "¡Listo!"); 
+      this.toast.success(`Agregaste "${articulo.descripcion}" al carrito`, "¡Listo!"); 
     } else {
       this.toast.warning("El carrito ya tiene ese item", "¡Cuidado!");
     }

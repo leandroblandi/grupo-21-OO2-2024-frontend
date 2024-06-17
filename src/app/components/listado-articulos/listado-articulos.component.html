@@ -47,10 +47,12 @@
                 <i class="fa-solid fa-truck-fast"></i>
                 <sub>Envío gratis</sub>
               </div>
-              <button (click)="agregarAlCarrito(articulo)" class="buy-button">
-                <i class="fa-solid fa-cart-plus"></i>
-                Agregar al carrito
-              </button>
+              @if (rol.authority == "ROLE_CLIENTE") {
+                <button (click)="agregarAlCarrito(articulo)" class="buy-button">
+                  <i class="fa-solid fa-cart-plus"></i>
+                  Agregar al carrito
+                </button>
+              }
               @if (rol.authority == "ROLE_ADMINISTRADOR") {
                 <div class="editar-articulo-section">
                   <button routerLink="/editar-articulo/{{articulo.idArticulo}}">Editar</button>

@@ -4,12 +4,13 @@ import { ArticuloService } from '../../core/services/articulo.service';
 import { VentaService } from '../../core/services/venta.service';
 import { ToastrService } from 'ngx-toastr';
 import ItemDto from '../../core/models/item.dto';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-comprar',
   standalone: true,
-  imports: [],
+  imports: [CurrencyPipe, RouterModule],
   templateUrl: './comprar.component.html',
   styleUrl: './comprar.component.css'
 })
@@ -19,6 +20,7 @@ export class ComprarComponent implements OnInit{
   articulosSelected: Articulo[] = [];
   itemsDto: ItemDto[] = [];
   horaHoy: number = new Date().getHours();
+  sumaTotal: number = 0;
 
   constructor(
     private articuloService: ArticuloService,
@@ -34,6 +36,7 @@ export class ComprarComponent implements OnInit{
       this.articulos = JSON.parse(localStorage.getItem("articulos")!);
       this.idsArticulos = JSON.parse(localStorage.getItem("articulos_en_carrito")!);
       this.itemsDto = this.getItemDtoByIds(this.idsArticulos);
+      this.sumaTotal = this.calcularTotalItems();
     } else {
       this.verificarItems();
     }
@@ -47,7 +50,8 @@ export class ComprarComponent implements OnInit{
       dtos.push({
         id: articulo.idArticulo,
         descripcion: articulo.descripcion,
-        cantidad: 1
+        cantidad: 1,
+        precio: articulo.precioVenta
       });
     }
     
@@ -111,5 +115,15 @@ export class ComprarComponent implements OnInit{
     }
 
     this.verificarItems();
+  }
+
+  calcularTotalItems() {
+    let sumaTotal: number = 0;
+
+    for(let item of this.itemsDto) {
+      sumaTotal += item.precio;
+    }
+
+    return sumaTotal;
   }
 }

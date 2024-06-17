@@ -8,10 +8,25 @@
     <div class="header-menu">
       <ul>
         @if(rol.authority === "ROLE_ADMINISTRADOR") {
-          <li><a routerLink="/lotes" routerLinkActive="active-link">Lotes</a></li>
-          <li><a routerLink="/clientes" routerLinkActive="active-link">Clientes</a></li>
+          <li>
+            <a routerLink="/lotes" routerLinkActive="active-link">
+              <i class="fa-solid fa-dolly"></i>
+              Lotes
+            </a>
+          </li>
+          <li>
+            <a routerLink="/clientes" routerLinkActive="active-link">
+              <i class="fa-solid fa-users"></i>
+              Clientes
+            </a>
+          </li>
         }
-        <li><a routerLink="/articulos" routerLinkActive="active-link">Articulos</a></li>
+        <li>
+          <a routerLink="/articulos" routerLinkActive="active-link">
+            <i class="fa-solid fa-box-open"></i>
+            Articulos
+          </a>
+        </li>
       </ul>
     </div>
     <div class="user-section">

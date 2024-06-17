@@ -4,12 +4,12 @@ import { ArticuloService } from '../../core/services/articulo.service';
 import { LoteService } from '../../core/services/lote.service';
 import { ToastrService } from 'ngx-toastr';
 import Articulo from '../../core/models/articulo';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-alta-lote',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterModule],
   templateUrl: './alta-lote.component.html',
   styleUrl: './alta-lote.component.css'
 })
