@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ArticuloService } from '../../core/services/articulo.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router, RouterModule } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-alta-articulo',
@@ -11,7 +12,7 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './alta-articulo.component.html',
   styleUrl: './alta-articulo.component.css'
 })
-export class AltaArticuloComponent {
+export class AltaArticuloComponent implements OnInit {
   descripcion: string = "";
   costo: number = 0;
   precioVenta: number = 0;
@@ -19,9 +20,14 @@ export class AltaArticuloComponent {
   constructor(
     private articuloService: ArticuloService,
     private toast: ToastrService,
-    private router: Router
+    private router: Router,
+    private title: Title
   ) {
 
+  }
+
+  ngOnInit(): void {
+    this.title.setTitle("Hastock :: Alta de artículo");
   }
 
   crearArticulo(): void {

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../../core/services/login.service';
 import { ToastrService } from 'ngx-toastr';
 import TokenReponse from '../../core/models/tokenResponse';
 import { Router, RouterModule } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register',
@@ -12,15 +13,25 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   nombres: string = "";
   apellidos: string = "";
   documento: number = 0;
   usuario: string = "";
   clave: string = "";
 
-  constructor(private loginService: LoginService, private toast: ToastrService, private router: Router) {
+  constructor(
+    private loginService: LoginService, 
+    private toast: ToastrService, 
+    private router: Router,
+    private title: Title
+    
+  ) {
 
+  }
+
+  ngOnInit() {
+    this.title.setTitle("Hastock :: Registro");
   }
 
   attemptRegister() {

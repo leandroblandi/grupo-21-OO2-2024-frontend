@@ -7,6 +7,7 @@ import { LoginService } from '../../core/services/login.service';
 import Rol from '../../core/models/rol';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-listado-lotes',
@@ -27,13 +28,15 @@ export class ListadoLotesComponent implements OnInit {
   constructor(
     private loteService: LoteService, 
     private toast: ToastrService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private title: Title
   ) { }
 
 
   ngOnInit(): void {
     this.getLotes();
     this.rol = this.loginService.getRolUsuario();
+    this.title.setTitle("Hastock :: Lotes de artículos");
   }
 
   getLotes(): void {

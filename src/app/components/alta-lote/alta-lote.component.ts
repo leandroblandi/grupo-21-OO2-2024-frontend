@@ -5,6 +5,7 @@ import { LoteService } from '../../core/services/lote.service';
 import { ToastrService } from 'ngx-toastr';
 import Articulo from '../../core/models/articulo';
 import { Router, RouterModule } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-alta-lote',
@@ -23,13 +24,15 @@ export class AltaLoteComponent implements OnInit {
     private articuloService: ArticuloService,
     private loteService: LoteService,
     private toast: ToastrService,
-    private router: Router
+    private router: Router,
+    private title: Title
   ) {
 
   }
 
   ngOnInit(): void {
       this.getArticulos();
+      this.title.setTitle("Hastock :: Alta de lote");
   }
 
   getArticulos() {

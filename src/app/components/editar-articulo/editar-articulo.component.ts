@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ArticuloService } from '../../core/services/articulo.service';
 import { FormsModule } from '@angular/forms';
 import Articulo from '../../core/models/articulo';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-editar-articulo',
@@ -22,13 +23,15 @@ export class EditarArticuloComponent implements OnInit {
     private articuloService: ArticuloService,
     private toast: ToastrService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private title: Title
   ) {
     this.idArticulo = this.activatedRoute.snapshot.params["id"];
   }
 
   ngOnInit() {
     this.getArticulo(this.idArticulo);
+    this.title.setTitle("Hastock :: Editar artículo");
   }
 
   getArticulo(id: number) {

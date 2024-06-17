@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import ItemDto from '../../core/models/item.dto';
 import { Router, RouterModule } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-comprar',
@@ -26,7 +27,8 @@ export class ComprarComponent implements OnInit{
     private articuloService: ArticuloService,
     private ventaService: VentaService,
     private toast: ToastrService,
-    private router: Router
+    private router: Router,
+    private title: Title
   ) { }
 
 
@@ -40,6 +42,7 @@ export class ComprarComponent implements OnInit{
     } else {
       this.verificarItems();
     }
+    this.title.setTitle("Hastock :: Carrito de compra");
   }
 
   getItemDtoByIds(ids: number[]): ItemDto[] {

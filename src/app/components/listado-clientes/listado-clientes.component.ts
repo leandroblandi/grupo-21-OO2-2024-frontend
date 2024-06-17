@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../core/services/usuario.service';
 import Usuario from '../../core/models/usuario';
 import { ToastrService } from 'ngx-toastr';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-listado-clientes',
@@ -17,12 +18,14 @@ export class ListadoClientesComponent implements OnInit {
   
   constructor(
     private usuarioService: UsuarioService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private title: Title
   ) { }
 
   ngOnInit() {
     this.getUsuarios();
     this.actualizarListClientes();
+    this.title.setTitle("Hastock :: Clientes");
   }
 
   getUsuarios(): void {

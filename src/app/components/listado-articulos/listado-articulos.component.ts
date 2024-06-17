@@ -6,6 +6,7 @@ import Rol from '../../core/models/rol';
 import { LoginService } from '../../core/services/login.service';
 import { CurrencyPipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-listado-articulos',
@@ -25,13 +26,16 @@ export class ListadoArticulosComponent implements OnInit {
   constructor(
     private articuloService: ArticuloService,
     private toast: ToastrService,
-    private loginService: LoginService) { }
+    private loginService: LoginService,
+    private title: Title
+  ) { }
   
   ngOnInit(): void {
     this.getArticulos();
     this.actualizarListArticulos();
     this.rol = this.loginService.getRolUsuario();
     this.setearCarrito();
+    this.title.setTitle("Hastock :: Artículos");
   }
 
   setearCarrito(): void {
