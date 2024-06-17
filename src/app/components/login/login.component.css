@@ -7,6 +7,7 @@
   width: 30%;
   background: #fff;
   padding: 35px 30px;
+  border-radius: 5px;
 }
 
 .login-container .login-header h2 {
@@ -70,4 +71,18 @@
 .login-info p {
   color: #888;
   font-size: 20px;
+}
+
+.form-control sub {
+  font-weight: 600;
+  color: #666;
+  margin-left: 5px;
+  margin-top: 8px;
+  cursor: pointer;
+  width: fit-content;
+  display: block;
+}
+
+.form-control sub:hover {
+  text-decoration: underline;
 }

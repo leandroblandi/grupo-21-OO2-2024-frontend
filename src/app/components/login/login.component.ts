@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../../core/services/login.service';
 import { ToastrService } from 'ngx-toastr';
 import TokenReponse from '../../core/models/tokenResponse';
 import { Router, RouterModule } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -13,16 +14,23 @@ import { HeaderComponent } from '../header/header.component';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   usuario: string = "";
   clave: string = "";
+  passwordInputType: string = "password";
+  placeHolderPassword: string = "•••••••••";
 
   constructor(
     private loginService: LoginService, 
     private toast: ToastrService, 
     private router: Router, 
-    private header: HeaderComponent) {
+    private header: HeaderComponent,
+    private title: Title) {
 
+  }
+
+  ngOnInit() {
+    this.title.setTitle("Hastock :: Ingreso");
   }
 
   attemptLogin() {
@@ -50,5 +58,15 @@ export class LoginComponent {
   setearDatosSesion(res: TokenReponse): void {
     localStorage.setItem("token", res.token);
     localStorage.setItem("usuario", res.usuario);
+  }
+
+  togglePassword() {
+    if(this.passwordInputType == "password") {
+      this.passwordInputType = "text";
+      this.placeHolderPassword = "1234"
+    } else {
+      this.passwordInputType = "password";
+      this.placeHolderPassword = "•••••••••";
+    }
   }
 }

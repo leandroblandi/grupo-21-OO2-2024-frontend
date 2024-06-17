@@ -44,7 +44,7 @@ export class RegisterComponent {
           }, error: (err) => {
 
             if(err.status == 400) {
-              this.toast.error(`Hubo un problema: ${err}`, "¡Oops!");
+              this.toast.error(`Hubo un problema: ${err.error.details}`, "¡Oops!");
             }
           }
         });
