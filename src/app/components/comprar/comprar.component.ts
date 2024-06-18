@@ -23,6 +23,7 @@ export class ComprarComponent implements OnInit{
   itemsDto: ItemDto[] = [];
   horaHoy: number = new Date().getHours();
   sumaTotal: number = 0;
+  idUsuario: number = 0;
 
   constructor(
     private articuloService: ArticuloService,
@@ -45,6 +46,7 @@ export class ComprarComponent implements OnInit{
       this.verificarItems();
     }
     this.title.setTitle("Hastock :: Carrito de compra");
+    this.obtenerUsuario();
   }
 
   getItemDtoByIds(ids: number[]): ItemDto[] {
@@ -110,22 +112,10 @@ export class ComprarComponent implements OnInit{
       });
     }
 
-  let idUsuario = 0; 
-  let usuario = localStorage.getItem("usuario")!;  
-  console.log(usuario);
-  this.usuarioService.getUsuario(usuario).subscribe({
-    next: (usuarioObtenido) => {
-      idUsuario = usuarioObtenido.idUsuario;
-    },error:(mensajeError) => {
-      this.toast.error("Hubo un error al obtener el usuario", "Error");
-    }
-
-  });  
-
     let ventaDto = {
       fecha: new Date(),
       items: itemsCompra,
-      idUsuario: idUsuario
+      idUsuario: this.idUsuario
     }
 
     this.ventaService.generarVenta(ventaDto).subscribe({
@@ -138,6 +128,21 @@ export class ComprarComponent implements OnInit{
     });
     
   }
+
+  obtenerUsuario() {
+    let usuario = localStorage.getItem("usuario")!;  
+    
+    this.usuarioService.getUsuario(usuario).subscribe({
+      next: (usuarioObtenido) => {
+        
+        this.idUsuario = usuarioObtenido.idUsuario;
+      },error:(mensajeError) => {
+        this.toast.error("Hubo un error al obtener el usuario", "Error");
+      }
+  
+    });  
+  }
+
 
   verificarItems() {
     if(this.idsArticulos.length == 0
