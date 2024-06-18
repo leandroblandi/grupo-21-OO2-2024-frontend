@@ -61,7 +61,7 @@ export class ComprarComponent implements OnInit{
         precio: articulo.precioVenta
       });
     }
-    
+
     return dtos;
   }
 
@@ -104,7 +104,7 @@ export class ComprarComponent implements OnInit{
   realizarCompra() {
 
     let itemsCompra = [];
-   
+
     for(let item of this.itemsDto){
       itemsCompra.push({
         idArticulo: item.id,
@@ -122,25 +122,27 @@ export class ComprarComponent implements OnInit{
       next: (respuesta) => {
         this.toast.success("Compra realizada con exito", "Compra Lista");
         this.router.navigate(["/articulos"]);
+        localStorage.removeItem("articulos_en_carrito");
+        localStorage.removeItem("articulos");
       },error:(mensajeError) =>{
         this.toast.error("Hubo un error al realizar la compra", "Error");
       }
     });
-    
+
   }
 
   obtenerUsuario() {
-    let usuario = localStorage.getItem("usuario")!;  
-    
+    let usuario = localStorage.getItem("usuario")!;
+
     this.usuarioService.getUsuario(usuario).subscribe({
       next: (usuarioObtenido) => {
-        
+
         this.idUsuario = usuarioObtenido.idUsuario;
       },error:(mensajeError) => {
         this.toast.error("Hubo un error al obtener el usuario", "Error");
       }
-  
-    });  
+
+    });
   }
 
 
@@ -158,7 +160,7 @@ export class ComprarComponent implements OnInit{
     this.idsArticulos = this.idsArticulos.filter(id => id != item.id);
     localStorage.setItem("articulos_en_carrito", JSON.stringify(this.idsArticulos));
     this.itemsDto = this.itemsDto.filter(i => i.id != item.id);
-    
+
     if(this.idsArticulos.length == 0) {
       localStorage.removeItem("articulos_en_carrito");
     }
