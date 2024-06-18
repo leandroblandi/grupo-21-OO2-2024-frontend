@@ -89,6 +89,10 @@
   flex-grow: 1;
 }
 
+.articulo-item .desactivado{
+  height: 300px;
+}
+
 .articulo-item .articulo-body .descripcion-articulo {
   overflow: hidden;
 }

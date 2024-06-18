@@ -77,7 +77,7 @@
     </div>
     @for (articulo of articulos; track $index) {
       @if(articulo.activo == false){
-        <div class="articulo-item">
+        <div class="articulo-item desactivado">
           <div class="articulo-header">
             <img src="./assets/product.png" alt="Product icon">
           </div>
@@ -101,7 +101,7 @@
     </div>
     @for (articulo of articulos; track $index) {
       @if(articulo.estaEnUnLote == false){
-        <div class="articulo-item">
+        <div class="articulo-item desactivado">
           <div class="articulo-header">
             <img src="./assets/product.png" alt="Product icon">
           </div>
