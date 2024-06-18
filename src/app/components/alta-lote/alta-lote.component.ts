@@ -38,7 +38,7 @@ export class AltaLoteComponent implements OnInit {
   getArticulos() {
     this.articuloService.getArticulos().subscribe({
       next: (res) => {
-        this.articulos = res;
+        this.articulos = res.filter(art => art.estaEnUnLote == false);
       }, error: (err) => {
         this.toast.error("Hubo un error al obtener los artículos", "¡Oops!");
       }
