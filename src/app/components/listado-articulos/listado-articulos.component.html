@@ -60,6 +60,7 @@
                 <div class="eliminar-articulo-section">
                   <button (click)="eliminarArticulo(articulo.idArticulo)">Eliminar</button>
                 </div>
+              
               }
             </div>
           </div>
@@ -68,3 +69,53 @@
     }
   }
 </div>
+@if (rol.authority == "ROLE_ADMINISTRADOR"){
+  <div class="listado-articulos-container">
+    <div class="listado-header">
+      <h2>Articulos inactivos</h2>
+      <p>Estos artículos fueron inhabilitados para la compra, o fueron eliminados</p>
+    </div>
+    @for (articulo of articulos; track $index) {
+      @if(articulo.activo == false){
+        <div class="articulo-item">
+          <div class="articulo-header">
+            <img src="./assets/product.png" alt="Product icon">
+          </div>
+          <div class="articulo-body">
+            <sub>ID de art. #{{articulo.idArticulo}}</sub>
+            <div class="descripcion-articulo">
+              <h6>{{articulo.descripcion}}</h6>
+            </div>
+            <div class="comprar-section">
+              <p>{{articulo.precioVenta | currency: 'USD' : 'symbol'}}</p>
+            </div>
+          </div>
+        </div>
+      }
+    }
+  </div>
+  <div class="listado-articulos-container">
+    <div class="listado-header">
+      <h2>Articulo sin stock</h2>
+      <p>Los siguientes artículos están cargados en el sistema, pero no contamos con un lote del mismo</p>
+    </div>
+    @for (articulo of articulos; track $index) {
+      @if(articulo.estaEnUnLote == false){
+        <div class="articulo-item">
+          <div class="articulo-header">
+            <img src="./assets/product.png" alt="Product icon">
+          </div>
+          <div class="articulo-body">
+            <sub>ID de art. #{{articulo.idArticulo}}</sub>
+            <div class="descripcion-articulo">
+              <h6>{{articulo.descripcion}}</h6>
+            </div>
+            <div class="comprar-section">
+              <p>{{articulo.precioVenta | currency: 'USD' : 'symbol'}}</p>
+            </div>
+          </div>
+        </div>
+      }
+    }
+  </div>
+}
