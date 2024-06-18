@@ -101,30 +101,3 @@
   color: #888;
   font-size: 20px;
 }
-
-.advice-section {
-  width: 100%;
-  background: #d1ce72;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-.advice-section sub, i {
-  font-weight: 600;
-  color: #563e12;
-  font-size: 18px;
-  padding: 5px 0 2px;
-}
-
-.advice-section .advice-header sub {
-  font-weight: bold;
-}
-
-.advice-section .advice-header {
-  display: flex;
-  align-items: center;
-}
-
-.advice-header i {
-  margin-right: 5px;
-}
