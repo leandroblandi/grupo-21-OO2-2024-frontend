@@ -7,6 +7,7 @@ import ItemDto from '../../core/models/item.dto';
 import { Router, RouterModule } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
+import { UsuarioService } from '../../core/services/usuario.service';
 
 @Component({
   selector: 'app-comprar',
@@ -22,10 +23,12 @@ export class ComprarComponent implements OnInit{
   itemsDto: ItemDto[] = [];
   horaHoy: number = new Date().getHours();
   sumaTotal: number = 0;
+  idUsuario: number = 0;
 
   constructor(
     private articuloService: ArticuloService,
     private ventaService: VentaService,
+    private usuarioService: UsuarioService,
     private toast: ToastrService,
     private router: Router,
     private title: Title
@@ -43,6 +46,7 @@ export class ComprarComponent implements OnInit{
       this.verificarItems();
     }
     this.title.setTitle("Hastock :: Carrito de compra");
+    this.obtenerUsuario();
   }
 
   getItemDtoByIds(ids: number[]): ItemDto[] {
@@ -99,7 +103,46 @@ export class ComprarComponent implements OnInit{
 
   realizarCompra() {
 
+    let itemsCompra = [];
+   
+    for(let item of this.itemsDto){
+      itemsCompra.push({
+        idArticulo: item.id,
+        cantidad: item.cantidad
+      });
+    }
+
+    let ventaDto = {
+      fecha: new Date(),
+      items: itemsCompra,
+      idUsuario: this.idUsuario
+    }
+
+    this.ventaService.generarVenta(ventaDto).subscribe({
+      next: (respuesta) => {
+        this.toast.success("Compra realizada con exito", "Compra Lista");
+        this.router.navigate(["/articulos"]);
+      },error:(mensajeError) =>{
+        this.toast.error("Hubo un error al realizar la compra", "Error");
+      }
+    });
+    
   }
+
+  obtenerUsuario() {
+    let usuario = localStorage.getItem("usuario")!;  
+    
+    this.usuarioService.getUsuario(usuario).subscribe({
+      next: (usuarioObtenido) => {
+        
+        this.idUsuario = usuarioObtenido.idUsuario;
+      },error:(mensajeError) => {
+        this.toast.error("Hubo un error al obtener el usuario", "Error");
+      }
+  
+    });  
+  }
+
 
   verificarItems() {
     if(this.idsArticulos.length == 0
