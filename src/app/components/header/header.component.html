@@ -27,12 +27,14 @@
             Articulos
           </a>
         </li>
-        <li>
-          <a routerLink="/mis-compras" routerLinkActive="active-link">
-            <i class="fa-solid fa-bag-shopping"></i>
-            Mis Compras
-          </a>
-        </li>
+        @if (rol.authority == "ROLE_CLIENTE") {
+          <li>
+            <a routerLink="/mis-compras" routerLinkActive="active-link">
+              <i class="fa-solid fa-bag-shopping"></i>
+              Mis Compras
+            </a>
+          </li>
+        }
       </ul>
     </div>
     <div class="user-section">

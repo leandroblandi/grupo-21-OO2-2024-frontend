@@ -14,6 +14,7 @@ import { ComprarComponent } from './components/comprar/comprar.component';
 import { MisComprasComponent } from './components/mis-compras/mis-compras.component';
 
 const rolAdministrador: string = "ROLE_ADMINISTRADOR";
+const rolCliente: string = "ROLE_CLIENTE";
 
 export const routes: Routes = [
 
@@ -84,6 +85,10 @@ export const routes: Routes = [
   },
 {
   path: "mis-compras",
-  component: MisComprasComponent
+  component: MisComprasComponent,
+  canActivate: [AuthGuard, RoleGuard],
+  data: {
+      rol: rolCliente
+  }
 }
 ];
