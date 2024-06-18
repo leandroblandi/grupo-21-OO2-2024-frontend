@@ -255,7 +255,59 @@ sub {
 
 .aprovisionamiento-section {
   background: white;
+  width: 30%;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+
+.aprov-sect-header p{
+  font-size: 18px;
+}
+
+.close-button button{
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: none;
+  background: #d1d1d1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.close-button button:hover{
+  background: #b0b0b0;
+}
+
+.close-button button i{
+  font-size: 15px;
+}
+
+.aprovisionamiento-section .form-control{
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;
+  width: 50%;
+}
+
+.aprovisionamiento-section .form-control button {
+  width: 100%;
+  margin: 10px 0 5px;
+  background: #1e6eca;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 2px;
+  font-weight: 600;
+  color:#ffffff;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.aprovisionamiento-section .form-control button:hover {
+  background: #1859a4;
+}
+
+
