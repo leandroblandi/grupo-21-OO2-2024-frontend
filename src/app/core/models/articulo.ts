@@ -6,4 +6,5 @@ export default interface Articulo {
   fechaCreacion: Date;
   fechaActualizacion: Date;
   activo: boolean;
+  estaEnUnLote: boolean;
 }

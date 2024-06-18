@@ -31,7 +31,7 @@
     </div>
   } @else {
     @for (articulo of articulos; track $index) {
-      @if(articulo.activo) {
+      @if(articulo.activo && articulo.estaEnUnLote) {
         <div class="articulo-item">
           <div class="articulo-header">
             <img src="./assets/product.png" alt="Product icon">
