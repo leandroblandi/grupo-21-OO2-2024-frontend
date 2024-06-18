@@ -102,3 +102,35 @@
   color: #888;
   font-size: 20px;
 }
+
+.form-control button:disabled {
+  background: #72a1d6;
+  cursor: not-allowed;
+}
+
+.form-advice {
+  margin: 20px 0;
+  background: #c7ae68;
+  color: #503d07;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid #b0964f;
+}
+
+.form-advice p {
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.form-advice sub {
+  font-size: 18px;
+}
+
+select:disabled {
+  background: transparent;
+}
+
+select:disabled, input:disabled {
+  cursor: not-allowed;
+}

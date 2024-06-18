@@ -44,7 +44,6 @@ export class AltaLoteComponent implements OnInit {
       }
     });
   }
-
   crearLote() {
     if(this.idArticulo > 0
       && this.cantidad > 0
