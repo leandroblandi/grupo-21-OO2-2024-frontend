@@ -20,6 +20,14 @@ export class VentaService {
     return this.http.post<Venta>(this.url + this.prefix + this.ventas, dto);
   }
 
+  getVenta(id: number): Observable<Venta>{
+    return this.http.get<Venta>(this.url + this.prefix + this.ventas + "/" + id);
+  }
+
+  getVentas(): Observable<Venta[]>{
+    return this.http.get<Venta[]>(this.url + this.prefix + this.ventas);
+  }
+
 }
 
 
