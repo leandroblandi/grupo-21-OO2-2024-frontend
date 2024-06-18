@@ -15,8 +15,6 @@ export class VentaService {
   constructor(private http: HttpClient) { }
 
   generarVenta(dto: any): Observable<Venta>{
-    console.log(this.url + this.prefix + this.ventas);
-    console.log(dto);
     return this.http.post<Venta>(this.url + this.prefix + this.ventas, dto);
   }
 
@@ -26,6 +24,10 @@ export class VentaService {
 
   getVentas(): Observable<Venta[]>{
     return this.http.get<Venta[]>(this.url + this.prefix + this.ventas);
+  }
+
+  getVentasPorUsuario(usuario: string): Observable<Venta[]>{
+    return this.http.get<Venta[]>(this.url + this.prefix + this.ventas + "/usuario/" + usuario);
   }
 
 }

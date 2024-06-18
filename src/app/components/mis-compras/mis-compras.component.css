@@ -1,0 +1,47 @@
+.empty-state-div {
+  padding: 30px 20px;
+  background: #fff;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.empty-state-div img {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.empty-state-div p {
+  font-weight: 600;
+  color: #555;
+}
+
+.listado-compras-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.listado-header {
+  margin: 20px 5px 30px;
+  width: 100%;
+}
+
+.listado-header p {
+  font-weight: 600;
+  color: #777;
+}
+
+.item-compras{
+  margin: 20px 0px;
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 5px;
+  border: 1px solid #acacac;
+}
+

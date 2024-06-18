@@ -1,0 +1,22 @@
+<div class="listado-compras-container">
+  <div class="listado-header">
+    <h2>Mis Compras</h2>
+    <p>¡Tus compras en un solo lado!</p>
+  </div>
+  @if(ventas.length == 0) {
+    <div class="empty-state-div">
+      <img src="./assets/empty_state.png" alt="No hay elementos en la base de datos">
+      <p>¡Nada por aquí! Prueba a cargar algunos artículos</p>
+    </div>
+  } @else {
+    @for (venta of ventas; track $index) {
+      <div class="item-compras">
+          @for (item of venta.items; track $index) {
+            <h6>{{item.articulo.descripcion}}</h6>
+            <p>Cantidad: {{item.cantidad}} u.</p>
+          }
+          <p>Fecha: {{venta.fechaVenta}}</p>
+      </div>
+    }
+  }
+</div>

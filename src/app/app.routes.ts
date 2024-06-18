@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { RoleGuard } from './core/guards/role.guard';
 import { EditarArticuloComponent } from './components/editar-articulo/editar-articulo.component';
 import { ComprarComponent } from './components/comprar/comprar.component';
+import { MisComprasComponent } from './components/mis-compras/mis-compras.component';
 
 const rolAdministrador: string = "ROLE_ADMINISTRADOR";
 
@@ -80,5 +81,9 @@ export const routes: Routes = [
     data: {
       rol: rolAdministrador
     }
-  }
+  },
+{
+  path: "mis-compras",
+  component: MisComprasComponent
+}
 ];
