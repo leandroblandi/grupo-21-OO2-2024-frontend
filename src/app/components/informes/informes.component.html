@@ -1,1 +1,47 @@
-<p>informes works!</p>
+<div class="informes-container">
+  <div class="informes-header">
+    <h2>Informes</h2>
+    <p>Chequea las estadísticas de tu emprendimiento</p>
+  </div>
+  <div class="informe-contenido">
+    <div class="cuadro-informe">
+      <p>{{totalVentas}} venta/s</p>
+    </div>
+    <div class="cuadro-informe">
+      <p>{{totalClientes}} cliente/s</p>
+    </div>
+    <div class="cuadro-informe">
+      <p>{{totalAdministradores}} administrador/es</p>
+    </div>
+  </div>
+  <div class="flex-container">
+    <div class="contenido-articulos-mas-vendidos">
+      <div class="contenido-header">
+        <h6>Top 3 Articulos más vendidos</h6>
+        <p>Esto son los artículos más aclamados por los clientes</p>
+      </div>
+      <div class="contenido-body">
+        @for (articulo of listaArticulosMasVendidos; track $index) {
+          <div class="contenido-item">
+            <p>{{articulo.articulo.descripcion}}</p>
+            <sub>con {{articulo.cantidad}} unidades vendidas</sub>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="contenido-articulos-mas-dias">
+      <div class="contenido-header">
+        <h6>Articulos con más tiempo publicados</h6>
+        <p>Ya se están volviendo obsoletos...</p>
+      </div>
+      <div class="contenido-body">
+        @for (articulo of listaArticulosConMasDias; track $index) {
+          <div class="contenido-item">
+            <p>{{articulo.nombreArticulo}}</p>
+            <sub>con {{articulo.dias}} días</sub>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

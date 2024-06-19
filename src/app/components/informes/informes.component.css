@@ -1,0 +1,93 @@
+.informes-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.informes-header {
+  margin: 20px 5px 30px;
+  width: 100%;
+}
+
+.informes-header p {
+  font-weight: 600;
+  color: #777;
+}
+
+.cuadro-informe {
+  padding: 40px 30px;
+  background: #fff;
+  width: 380px;
+  margin: 0 20px;
+  border-radius: 7px;
+  transition: all .3s;
+  cursor: pointer;
+}
+
+.cuadro-informe:first-child {
+  margin-left: 0;
+}
+
+.cuadro-informe p {
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+
+.cuadro-informe:hover {
+  transform: scale(1.05);
+  transition: all .3s;
+}
+
+.informe-contenido {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0 30px;
+  justify-content: center;
+}
+
+.contenido-body sub {
+  font-size: 19px;
+  font-weight: 600;
+  color: #333;
+}
+
+.contenido-body p {
+  font-size: 20px;
+}
+
+.contenido-header p {
+  font-weight: 600;
+  font-size: 22px;
+  color: #555;
+}
+
+.contenido-header {
+  margin-bottom: 40px;
+}
+
+.contenido-item {
+  margin: 15px 0;
+  background: #fff;
+  color: #fff;
+  width: 500px;
+  padding: 20px 40px;
+  transition: all .3s;
+  cursor: pointer;
+}
+
+.contenido-item:hover {
+  transform: scale(1.05);
+  transition: all .3s;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.contenido-articulos-mas-vendidos, .contenido-articulos-mas-dias {
+  width: 45%;
+}

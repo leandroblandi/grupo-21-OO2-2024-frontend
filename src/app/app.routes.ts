@@ -12,6 +12,7 @@ import { RoleGuard } from './core/guards/role.guard';
 import { EditarArticuloComponent } from './components/editar-articulo/editar-articulo.component';
 import { ComprarComponent } from './components/comprar/comprar.component';
 import { MisComprasComponent } from './components/mis-compras/mis-compras.component';
+import { InformesComponent } from './components/informes/informes.component';
 
 const rolAdministrador: string = 'ROLE_ADMINISTRADOR';
 const rolCliente: string = 'ROLE_CLIENTE';
@@ -90,4 +91,20 @@ export const routes: Routes = [
       rol: rolCliente,
     },
   },
+  {
+    path: "mis-compras",
+    component: MisComprasComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      rol: rolCliente
+    }
+  },
+  {
+    path: "informes",
+    component: InformesComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      rol: rolAdministrador
+    }
+  }
 ];

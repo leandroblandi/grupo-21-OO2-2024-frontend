@@ -1,3 +1,4 @@
+import { InformeService } from './../../core/services/informe.service';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -5,6 +6,9 @@ import { ToastrService } from 'ngx-toastr';
 import { ArticuloService } from '../../core/services/articulo.service';
 import Articulo from '../../core/models/articulo';
 import Rol from '../../core/models/rol';
+import ArticuloCantidadDto from '../../core/models/articulo-cantidad.dto';
+import { environment } from '../../environments/environment';
+import ArticuloDiasDto from '../../core/models/articulo-dias.dto';
 
 @Component({
   selector: 'app-informes',
@@ -14,7 +18,11 @@ import Rol from '../../core/models/rol';
   styleUrls: ['./informes.component.css'],
 })
 export class InformesComponent implements OnInit {
-  articulos: Articulo[] = [];
+  listaArticulosMasVendidos: ArticuloCantidadDto[] = [];
+  listaArticulosConMasDias: ArticuloDiasDto[] = [];
+  totalVentas: number = 0;
+  totalClientes: number = 0;
+  totalAdministradores: number = 0;
   rol: Rol = {
     authority: 'ROLE_ADMINISTRADOR',
   };
@@ -23,12 +31,65 @@ export class InformesComponent implements OnInit {
     private toast: ToastrService,
     private router: Router,
     private title: Title,
-    private articuloService: ArticuloService
+    private informeService: InformeService
   ) {}
 
   ngOnInit() {
-    this.title.setTitle('Hastock :: Informes');
+    this.title.setTitle("Hastock :: Informes");
+    this.getArticulosMasVendidos();
+    this.getArticulosConMasDias();
+    this.getTotalVentas();
+    this.getTotalClientes();
+    this.getTotalAdministradores();
   }
 
-  getArticulosMasVendidos(): void {}
+  getArticulosMasVendidos(): void{
+    this.informeService.getArticulosMasVendidos().subscribe({
+      next: (res) =>{
+        this.listaArticulosMasVendidos = res;
+      }, error: (err) => {
+        this.toast.error("Hubo un error al obtener los artículos más vendidos", "¡Oops!")
+      }
+    })
+  }
+
+  getArticulosConMasDias(): void{
+    this.informeService.getArticulosConMasDias(90).subscribe({
+      next: (res) => {
+        this.listaArticulosConMasDias = res;
+      }, error: (err) => {
+        this.toast.error("Hubo un error al obtener los artículos con más días", "¡Oops!");
+      }
+    })
+  }
+
+  getTotalVentas(): void{
+    this.informeService.getTotalClientes().subscribe({
+      next: (res) => {
+        this.totalVentas = res;
+      }, error: (err) => {
+        this.toast.error("Hubo un error al obtener el total de ventas", "¡Oops!");
+      }
+    })
+  }
+
+  getTotalClientes(): void{
+    this.informeService.getTotalClientes().subscribe({
+      next: (res) => {
+        this.totalClientes = res;
+      }, error: (err) => {
+        this.toast.error("Hubo un error al obtener el total de clientes", "¡Oops!");
+      }
+    })
+  }
+
+  getTotalAdministradores(): void{
+    this.informeService.getTotalAdministradores().subscribe({
+      next: (res) => {
+        this.totalAdministradores = res;
+      }, error: (err) => {
+        this.toast.error("Hubo un error al obtener el total de administradores", "¡Oops!");
+      }
+    })
+  }
 }
