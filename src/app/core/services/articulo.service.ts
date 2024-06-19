@@ -25,8 +25,8 @@ export class ArticuloService {
 
   crearArticulo(descripcion : string, costo: number, precioVenta:number): Observable<Articulo>{
     let articuloDto = {
-      descripcion: descripcion, 
-      costo: costo, 
+      descripcion: descripcion,
+      costo: costo,
       precioVenta: precioVenta
     }
     return this.http.post<Articulo>(this.url + this.prefix + this.articulos,articuloDto);
@@ -34,8 +34,8 @@ export class ArticuloService {
 
   editarArticulo(id: number, descripcion : string, costo: number, precioVenta:number): Observable<Articulo>{
     let articuloDto = {
-      descripcion: descripcion, 
-      costo: costo, 
+      descripcion: descripcion,
+      costo: costo,
       precioVenta: precioVenta
     }
     return this.http.put<Articulo>(this.url + this.prefix + this.articulos + "/" + id, articuloDto);
@@ -46,4 +46,5 @@ export class ArticuloService {
   eliminarArticulo(id:number): Observable<Articulo>{
     return this.http.delete<Articulo>(this.url + this.prefix + this.articulos + "/"+ id);
   }
+
 }
