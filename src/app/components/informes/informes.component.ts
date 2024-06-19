@@ -9,6 +9,7 @@ import Rol from '../../core/models/rol';
 import ArticuloCantidadDto from '../../core/models/articulo-cantidad.dto';
 import { environment } from '../../environments/environment';
 import ArticuloDiasDto from '../../core/models/articulo-dias.dto';
+import { interval, take } from 'rxjs';
 
 @Component({
   selector: 'app-informes',
@@ -20,9 +21,11 @@ import ArticuloDiasDto from '../../core/models/articulo-dias.dto';
 export class InformesComponent implements OnInit {
   listaArticulosMasVendidos: ArticuloCantidadDto[] = [];
   listaArticulosConMasDias: ArticuloDiasDto[] = [];
+
   totalVentas: number = 0;
   totalClientes: number = 0;
   totalAdministradores: number = 0;
+
   rol: Rol = {
     authority: 'ROLE_ADMINISTRADOR',
   };
@@ -57,6 +60,7 @@ export class InformesComponent implements OnInit {
     this.informeService.getArticulosConMasDias(90).subscribe({
       next: (res) => {
         this.listaArticulosConMasDias = res;
+
       }, error: (err) => {
         this.toast.error("Hubo un error al obtener los artículos con más días", "¡Oops!");
       }
@@ -67,6 +71,13 @@ export class InformesComponent implements OnInit {
     this.informeService.getTotalClientes().subscribe({
       next: (res) => {
         this.totalVentas = res;
+
+        interval(120).pipe(
+          take(res + 1) // Tomar hasta el valor máximo
+        ).subscribe(count => {
+          this.totalVentas = count;
+        });
+
       }, error: (err) => {
         this.toast.error("Hubo un error al obtener el total de ventas", "¡Oops!");
       }
@@ -77,6 +88,13 @@ export class InformesComponent implements OnInit {
     this.informeService.getTotalClientes().subscribe({
       next: (res) => {
         this.totalClientes = res;
+
+        interval(120).pipe(
+          take(res + 1)
+        ).subscribe(count => {
+          this.totalClientes = count;
+        });
+
       }, error: (err) => {
         this.toast.error("Hubo un error al obtener el total de clientes", "¡Oops!");
       }
@@ -87,6 +105,13 @@ export class InformesComponent implements OnInit {
     this.informeService.getTotalAdministradores().subscribe({
       next: (res) => {
         this.totalAdministradores = res;
+
+        interval(120).pipe(
+          take(res + 1)
+        ).subscribe(count => {
+          this.totalAdministradores = count;
+        });
+
       }, error: (err) => {
         this.toast.error("Hubo un error al obtener el total de administradores", "¡Oops!");
       }
