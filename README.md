@@ -12,32 +12,32 @@ Antes de empezar, asegúrate de tener instaladas las siguientes herramientas:
 
 ## Instalación
 
-1.  **Clonar el repositorio**
-
-    Clona el repositorio en tu máquina local usando Git:
-
+1.  **Clonar el repositorio.** Clona el repositorio en tu máquina local usando `git clone [url]`:
     ```bash
     git clone https://github.com/leandroblandi/grupo-21-OO2-2024-frontend.git
     ```
 
-2.  Luego, navega al directorio del proyecto:
+2.  **Cambiarse a la carpeta del proyecto en la terminal.** Navega al directorio del proyecto utilizando el comando `cd`:
     ```bash
     cd grupo-21-OO2-2024-frontend
     ```
-3.  Instalar dependencias
-    Usa npm para instalar las dependencias del proyecto:
+3.  **Instalar dependencias.** Usa el comando `npm` para instalar las dependencias del proyecto.
     ```bash
     npm install
     ```
-4.  Levantar el proyecto
-    Para levantar el proyecto en un entorno de desarrollo, ejecuta el siguiente comando:
+
+    El mismo instalará entre otras, las siguientes dependencias:
+    - NGX Toastr
+    - Angular JWT
+    - Angular Animations
+5.  **Levantar el proyecto.** Para levantar el proyecto en un entorno de desarrollo, ejecuta el siguiente comando:
      ```bash
      npm start
      ```
     El proyecto estará disponible en http://localhost:4200/.
 
 ## Uso de la aplicación
-El primer paso para utilizar la aplicación, es iniciar sesión. La misma aplicación te redigirirá a la vista de inicio de sesión. Si quieres ver las funcionalidades de administrador, inicia sesión con los siguientes datos:
+**El primer paso para utilizar la aplicación, es iniciar sesión.** La misma aplicación te redigirirá a la vista de inicio de sesión. Si quieres ver las funcionalidades de administrador, inicia sesión con los siguientes datos:
   - **Usuario:** dummy
   - **Clave:** 1234
 
