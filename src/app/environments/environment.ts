@@ -6,5 +6,6 @@ export const environment = {
   usuarios: "/usuarios",
   articulos: "/articulos",
   roles: "/roles",
-  ventas: "/ventas"
+  ventas: "/ventas",
+  informes: "/informes"
 }
