@@ -5,13 +5,13 @@ import { ToastrService } from 'ngx-toastr';
 import { VentaService } from '../../core/services/venta.service';
 import Venta from '../../core/models/venta';
 import Usuario from '../../core/models/usuario';
-import { DatePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-mis-compras',
   templateUrl: './mis-compras.component.html',
   standalone: true,
-  imports: [DatePipe],
+  imports: [DatePipe, CurrencyPipe],
   styleUrls: ['./mis-compras.component.css'],
 })
 export class MisComprasComponent implements OnInit {
@@ -25,6 +25,7 @@ export class MisComprasComponent implements OnInit {
   ngOnInit() {
     this.title.setTitle('Hastock :: Mis Compras');
     this.obtenerCompras();
+    console.log(this.ventas);
   }
 
   ventas: Venta[] = [];

@@ -4,7 +4,7 @@ export default interface Venta {
   idVenta: number;
   fechaVenta: Date;
   items: ItemVenta[];
-  precio: number;
+  precioFinal: number;
   fechaCreacion: Date;
   fechaActualizacion: Date;
 }

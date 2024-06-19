@@ -44,3 +44,28 @@
   border-radius: 5px;
   border: 1px solid #acacac;
 }
+
+p.total-p {
+  width: fit-content;
+  margin-top: 30px;
+  font-weight: bold;
+  color: #555;
+}
+
+.item-venta:first-child {
+  margin-top: 0;
+}
+
+.item-venta {
+  margin: 30px 0;
+}
+
+.item-venta:last-child {
+  margin-bottom: 0;
+}
+
+sub.id-compra {
+  font-weight: 600;
+  color: #444;
+  font-size: 18px;
+}

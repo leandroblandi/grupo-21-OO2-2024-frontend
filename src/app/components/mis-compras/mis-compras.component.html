@@ -13,11 +13,15 @@
   </div>
   } @else { @for (venta of ventas; track $index) {
   <div class="item-compras">
+    <sub class="id-compra">ID Compra: # {{venta.idVenta}}</sub>
     @for (item of venta.items; track $index) {
-    <h6>{{ item.articulo.descripcion }}</h6>
-    <p>Cantidad: {{ item.cantidad }} u.</p>
+      <div class="item-venta">
+        <h6>{{ item.articulo.descripcion }}</h6>
+        <p>Cantidad: {{ item.cantidad }} u.</p>
+      </div>
     }
     <p>Fecha: {{ venta.fechaVenta | date : "dd/MM/yyyy" }}</p>
+    <p class="total-p">Total: {{ venta.precioFinal | currency : "USD" : "symbol" }}</p>
   </div>
   } }
 </div>
