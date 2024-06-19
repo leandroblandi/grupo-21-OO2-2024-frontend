@@ -138,7 +138,8 @@ div.items-section > div > div.right-section > sub {
   margin-right: 10px;
 }
 
-.compra-info-section sub, .compra-info-section i {
+.compra-info-section sub,
+.compra-info-section i {
   font-weight: 600;
   font-size: 16px;
   color: #36872d;

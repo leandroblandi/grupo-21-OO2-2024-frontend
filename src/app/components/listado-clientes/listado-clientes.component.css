@@ -47,7 +47,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 12px 15px;
   border: none;
   text-align: left;

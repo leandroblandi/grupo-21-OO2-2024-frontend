@@ -1,20 +1,18 @@
 import { inject } from '@angular/core';
-import { CanActivateFn, Router} from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { HeaderComponent } from '../../components/header/header.component';
 
 export const AuthGuard: CanActivateFn = (route, state) => {
-
   const router = inject(Router);
   const auth = inject(LoginService);
   const toast = inject(ToastrService);
 
-  if(auth.isAuthenticated()) {
+  if (auth.isAuthenticated()) {
     return true;
-
   } else {
-    toast.error("Debes estar autenticado para acceder a esta sesión", "Error");
+    toast.error('Debes estar autenticado para acceder a esta sesión', 'Error');
     router.navigate(['/iniciar-sesion']);
     return false;
   }

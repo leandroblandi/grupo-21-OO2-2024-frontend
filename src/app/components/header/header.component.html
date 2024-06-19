@@ -1,58 +1,66 @@
 <div class="header-container">
   <div class="header-brand">
     <a routerLink="">
-      <img src="./assets/logo-app.svg" alt="Hastock logo">
+      <img src="./assets/logo-app.svg" alt="Hastock logo" />
     </a>
   </div>
   @if(authenticated) {
-    <div class="header-menu">
-      <ul>
-        @if(rol.authority === "ROLE_ADMINISTRADOR") {
-          <li>
-            <a routerLink="/lotes" routerLinkActive="active-link">
-              <i class="fa-solid fa-dolly"></i>
-              Lotes
-            </a>
-          </li>
-          <li>
-            <a routerLink="/clientes" routerLinkActive="active-link">
-              <i class="fa-solid fa-users"></i>
-              Clientes
-            </a>
-          </li>
-        }
-        <li>
-          <a routerLink="/articulos" routerLinkActive="active-link">
-            <i class="fa-solid fa-box-open"></i>
-            Articulos
-          </a>
-        </li>
-        @if (rol.authority == "ROLE_CLIENTE") {
-          <li>
-            <a routerLink="/mis-compras" routerLinkActive="active-link">
-              <i class="fa-solid fa-bag-shopping"></i>
-              Mis Compras
-            </a>
-          </li>
-        }
-      </ul>
-    </div>
-    <div class="user-section">
-      Iniciaste sesión como
-      <br>
-      {{ username }}
-      <button (click)="logout()">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        Salir
-      </button>
-    </div>
+  <div class="header-menu">
+    <ul>
+      @if(rol.authority === "ROLE_ADMINISTRADOR") {
+      <li>
+        <a routerLink="/lotes" routerLinkActive="active-link">
+          <i class="fa-solid fa-dolly"></i>
+          Lotes
+        </a>
+      </li>
+      <li>
+        <a routerLink="/clientes" routerLinkActive="active-link">
+          <i class="fa-solid fa-users"></i>
+          Clientes
+        </a>
+      </li>
+      }
+      <li>
+        <a routerLink="/articulos" routerLinkActive="active-link">
+          <i class="fa-solid fa-box-open"></i>
+          Articulos
+        </a>
+      </li>
+      @if (rol.authority == "ROLE_CLIENTE") {
+      <li>
+        <a routerLink="/mis-compras" routerLinkActive="active-link">
+          <i class="fa-solid fa-bag-shopping"></i>
+          Mis Compras
+        </a>
+      </li>
+      }
+    </ul>
+  </div>
+  <div class="user-section">
+    Iniciaste sesión como
+    <br />
+    {{ username }}
+    <button (click)="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      Salir
+    </button>
+  </div>
   } @else {
-    <div class="header-menu">
-      <ul>
-          <li><a routerLink="/iniciar-sesion" routerLinkActive="active-link">Iniciar sesión</a></li>
-          <li><a routerLink="/registrarse" routerLinkActive="active-link">Registrarse</a></li>
-      </ul>
-    </div>
+  <div class="header-menu">
+    <ul>
+      <li>
+        <a routerLink="/iniciar-sesion" routerLinkActive="active-link"
+          >Iniciar sesión</a
+        >
+      </li>
+      <li>
+        <a routerLink="/registrarse" routerLinkActive="active-link"
+          >Registrarse</a
+        >
+      </li>
+    </ul>
+  </div>
   }
 </div>
 <router-outlet></router-outlet>

@@ -12,56 +12,61 @@ import { Title } from '@angular/platform-browser';
   standalone: true,
   imports: [FormsModule, RouterModule],
   templateUrl: './alta-lote.component.html',
-  styleUrl: './alta-lote.component.css'
+  styleUrl: './alta-lote.component.css',
 })
 export class AltaLoteComponent implements OnInit {
   cantidad: number = 0;
   idArticulo: number = 0;
-  proveedor: string = "";
+  proveedor: string = '';
   articulos: Articulo[] = [];
-  
+
   constructor(
     private articuloService: ArticuloService,
     private loteService: LoteService,
     private toast: ToastrService,
     private router: Router,
     private title: Title
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
-      this.getArticulos();
-      this.title.setTitle("Hastock :: Alta de lote");
+    this.getArticulos();
+    this.title.setTitle('Hastock :: Alta de lote');
   }
 
   getArticulos() {
     this.articuloService.getArticulos().subscribe({
       next: (res) => {
-        this.articulos = res.filter(art => art.estaEnUnLote == false);
-      }, error: (err) => {
-        this.toast.error("Hubo un error al obtener los artículos", "¡Oops!");
-      }
+        this.articulos = res.filter((art) => art.estaEnUnLote == false);
+      },
+      error: (err) => {
+        this.toast.error('Hubo un error al obtener los artículos', '¡Oops!');
+      },
     });
   }
   crearLote() {
-    if(this.idArticulo > 0
-      && this.cantidad > 0
-      && this.proveedor != ""
-    ) {
+    if (this.idArticulo > 0 && this.cantidad > 0 && this.proveedor != '') {
       let articuloSelected: Articulo = this.getArticuloById(this.idArticulo);
-      this.loteService.crearLote(this.idArticulo, this.cantidad, 0, this.proveedor, articuloSelected.costo).subscribe({
-        next: (res) => {
-          this.toast.success("Lote creado exitosamente", "¡Éxito!");
-          this.router.navigate(["/lotes"]);
-        }, error: (err) => {
-          this.toast.error("Hubo un error al crear el lote", "¡Oops!");
-        }
-      });
+      this.loteService
+        .crearLote(
+          this.idArticulo,
+          this.cantidad,
+          0,
+          this.proveedor,
+          articuloSelected.costo
+        )
+        .subscribe({
+          next: (res) => {
+            this.toast.success('Lote creado exitosamente', '¡Éxito!');
+            this.router.navigate(['/lotes']);
+          },
+          error: (err) => {
+            this.toast.error('Hubo un error al crear el lote', '¡Oops!');
+          },
+        });
     }
   }
-  
+
   getArticuloById(id: number): Articulo {
-    return this.articulos.find(art => art.idArticulo == id)!;
+    return this.articulos.find((art) => art.idArticulo == id)!;
   }
 }

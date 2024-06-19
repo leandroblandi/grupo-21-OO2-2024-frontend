@@ -8,7 +8,7 @@ import Rol from '../models/rol';
 import Usuario from '../models/usuario';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
   url: string = environment.url;
@@ -16,25 +16,31 @@ export class LoginService {
   loginUrl: string = environment.login;
   usuarios: string = environment.usuarios;
 
-  constructor(
-    private http: HttpClient, 
-    private jwtHelper: JwtHelperService) {
-  }
-  
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
+
   login(usuario: string, clave: string): Observable<TokenReponse> {
     const dto = {
       usuario: usuario,
-      clave: clave
-    }
-    return this.http.post<TokenReponse>(this.url + this.prefix + this.loginUrl, dto);
+      clave: clave,
+    };
+    return this.http.post<TokenReponse>(
+      this.url + this.prefix + this.loginUrl,
+      dto
+    );
   }
 
-  register(dto: { usuario: string; clave: string; nombre: string; apellido: string; dni: number; }): Observable<Usuario> {
+  register(dto: {
+    usuario: string;
+    clave: string;
+    nombre: string;
+    apellido: string;
+    dni: number;
+  }): Observable<Usuario> {
     return this.http.post<Usuario>(this.url + this.prefix + this.usuarios, dto);
   }
 
   isAuthenticated(): boolean {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     return !this.jwtHelper.isTokenExpired(token);
   }
 
@@ -43,8 +49,8 @@ export class LoginService {
   }
 
   getRolUsuario(): Rol {
-    const token = localStorage.getItem("token")!;
+    const token = localStorage.getItem('token')!;
     const decodedToken = this.jwtHelper.decodeToken(token);
     return JSON.parse(decodedToken.authorities)[0];
-  } 
+  }
 }

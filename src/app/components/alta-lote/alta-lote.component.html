@@ -11,32 +11,61 @@
   </div>
   <div class="alta-lote-form">
     @if(articulos.length == 0) {
-      <div class="form-advice">
-        <p>Aviso</p>
-        <sub>No se encuentran artículos disponibles para sumar a un lote, por lo que no puedes crear uno nuevo.</sub>
-      </div>
+    <div class="form-advice">
+      <p>Aviso</p>
+      <sub
+        >No se encuentran artículos disponibles para sumar a un lote, por lo que
+        no puedes crear uno nuevo.</sub
+      >
+    </div>
     }
     <div class="form-control">
       <label class="label" for="descripcion">Artículo</label>
       <sub>Selecciona el artículo del lote a crear</sub>
-      <select [disabled]="articulos.length == 0" name="id-articulo" [(ngModel)]="idArticulo">
+      <select
+        [disabled]="articulos.length == 0"
+        name="id-articulo"
+        [(ngModel)]="idArticulo"
+      >
         @for (articulo of articulos; track $index) {
-          <option value="{{articulo.idArticulo}}">{{articulo.descripcion}}</option>
+        <option value="{{ articulo.idArticulo }}">
+          {{ articulo.descripcion }}
+        </option>
         }
       </select>
     </div>
     <div class="form-control">
       <label class="label" for="cantidad">Cantidad</label>
       <sub>Ingresa la cantidad de articulos del lote</sub>
-      <input [disabled]="articulos.length == 0" [(ngModel)]="cantidad" type="number" placeholder="150" name="cantidad" required>
+      <input
+        [disabled]="articulos.length == 0"
+        [(ngModel)]="cantidad"
+        type="number"
+        placeholder="150"
+        name="cantidad"
+        required
+      />
     </div>
     <div class="form-control">
       <label class="label" for="proveedor">Proveedor</label>
       <sub>Ingresa el nombre/razón social</sub>
-      <input [disabled]="articulos.length == 0" [(ngModel)]="proveedor" type="text" placeholder="iPhone Store Miami SRL" name="proveedor" required>
+      <input
+        [disabled]="articulos.length == 0"
+        [(ngModel)]="proveedor"
+        type="text"
+        placeholder="iPhone Store Miami SRL"
+        name="proveedor"
+        required
+      />
     </div>
     <div class="form-control">
-      <button [disabled]="articulos.length == 0" type="button" (click)="crearLote()">Crear</button>
+      <button
+        [disabled]="articulos.length == 0"
+        type="button"
+        (click)="crearLote()"
+      >
+        Crear
+      </button>
     </div>
   </div>
 </div>

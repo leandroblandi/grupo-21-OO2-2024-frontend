@@ -1,4 +1,4 @@
-import Articulo from "./articulo";
+import Articulo from './articulo';
 
 export default interface ArticuloCantidadDto {
   articulo: Articulo;

@@ -2,120 +2,128 @@
   <div class="listado-header">
     <h2>Articulos disponibles</h2>
     <p>Echa un vistazo a todos nuestros artículos disponibles para la venta</p>
-    
+
     @if(rol.authority == "ROLE_ADMINISTRADOR") {
-      <div class="acciones-section">
-        <button class="nuevo-art" routerLink="/alta-articulo">
-          <i class="fa-solid fa-plus"></i>
-          Nuevo artículo
-        </button>
-      </div>
-    }
-    @if(rol.authority == "ROLE_CLIENTE" && carrito.length > 0) {
-      <div class="acciones-section">
-        <button class="nuevo-art" routerLink="/carrito" (click)="continuarAlCarrito()">
-          <i class="fa-solid fa-cart-shopping"></i>
-          En carrito ({{carrito.length}})
-        </button>
-        <button class="limpiar-carrito-btn" (click)="limpiarCarrito()">
-          <i class="fa-solid fa-cart-arrow-down"></i>
-          Eliminar carrito
-        </button>
-      </div>
+    <div class="acciones-section">
+      <button class="nuevo-art" routerLink="/alta-articulo">
+        <i class="fa-solid fa-plus"></i>
+        Nuevo artículo
+      </button>
+    </div>
+    } @if(rol.authority == "ROLE_CLIENTE" && carrito.length > 0) {
+    <div class="acciones-section">
+      <button
+        class="nuevo-art"
+        routerLink="/carrito"
+        (click)="continuarAlCarrito()"
+      >
+        <i class="fa-solid fa-cart-shopping"></i>
+        En carrito ({{ carrito.length }})
+      </button>
+      <button class="limpiar-carrito-btn" (click)="limpiarCarrito()">
+        <i class="fa-solid fa-cart-arrow-down"></i>
+        Eliminar carrito
+      </button>
+    </div>
     }
   </div>
   @if(articulos.length == 0 || ningunArticuloActivo) {
-    <div class="empty-state-div">
-      <img src="./assets/empty_state.png" alt="No hay elementos en la base de datos">
-      <p>¡Nada por aquí! Prueba a cargar algunos artículos</p>
+  <div class="empty-state-div">
+    <img
+      src="./assets/empty_state.png"
+      alt="No hay elementos en la base de datos"
+    />
+    <p>¡Nada por aquí! Prueba a cargar algunos artículos</p>
+  </div>
+  } @else { @for (articulo of articulos; track $index) { @if(articulo.activo &&
+  articulo.estaEnUnLote) {
+  <div class="articulo-item">
+    <div class="articulo-header">
+      <img src="./assets/product.png" alt="Product icon" />
     </div>
-  } @else {
-    @for (articulo of articulos; track $index) {
-      @if(articulo.activo && articulo.estaEnUnLote) {
-        <div class="articulo-item">
-          <div class="articulo-header">
-            <img src="./assets/product.png" alt="Product icon">
-          </div>
-          <div class="articulo-body">
-            <sub>ID de art. #{{articulo.idArticulo}}</sub>
-            <div class="descripcion-articulo">
-              <h6>{{articulo.descripcion}}</h6>
-            </div>
-            <div class="comprar-section">
-              <p>{{articulo.precioVenta | currency: 'USD' : 'symbol'}}</p>
-              <div class="envio-section">
-                <i class="fa-solid fa-truck-fast"></i>
-                <sub>Envío gratis</sub>
-              </div>
-              @if (rol.authority == "ROLE_CLIENTE") {
-                <button (click)="agregarAlCarrito(articulo)" class="buy-button">
-                  <i class="fa-solid fa-cart-plus"></i>
-                  Agregar al carrito
-                </button>
-              }
-              @if (rol.authority == "ROLE_ADMINISTRADOR") {
-                <div class="editar-articulo-section">
-                  <button routerLink="/editar-articulo/{{articulo.idArticulo}}">Editar</button>
-                </div>
-                <div class="eliminar-articulo-section">
-                  <button (click)="eliminarArticulo(articulo.idArticulo)">Eliminar</button>
-                </div>
-              
-              }
-            </div>
-          </div>
+    <div class="articulo-body">
+      <sub>ID de art. #{{ articulo.idArticulo }}</sub>
+      <div class="descripcion-articulo">
+        <h6>{{ articulo.descripcion }}</h6>
+      </div>
+      <div class="comprar-section">
+        <p>{{ articulo.precioVenta | currency : "USD" : "symbol" }}</p>
+        <div class="envio-section">
+          <i class="fa-solid fa-truck-fast"></i>
+          <sub>Envío gratis</sub>
         </div>
-      }
-    }
-  }
+        @if (rol.authority == "ROLE_CLIENTE") {
+        <button (click)="agregarAlCarrito(articulo)" class="buy-button">
+          <i class="fa-solid fa-cart-plus"></i>
+          Agregar al carrito
+        </button>
+        } @if (rol.authority == "ROLE_ADMINISTRADOR") {
+        <div class="editar-articulo-section">
+          <button routerLink="/editar-articulo/{{ articulo.idArticulo }}">
+            Editar
+          </button>
+        </div>
+        <div class="eliminar-articulo-section">
+          <button (click)="eliminarArticulo(articulo.idArticulo)">
+            Eliminar
+          </button>
+        </div>
+
+        }
+      </div>
+    </div>
+  </div>
+  } } }
 </div>
 @if (rol.authority == "ROLE_ADMINISTRADOR"){
-  <div class="listado-articulos-container">
-    <div class="listado-header">
-      <h2>Articulos inactivos</h2>
-      <p>Estos artículos fueron inhabilitados para la compra, o fueron eliminados</p>
-    </div>
-    @for (articulo of articulos; track $index) {
-      @if(articulo.activo == false){
-        <div class="articulo-item desactivado">
-          <div class="articulo-header">
-            <img src="./assets/broken_box.png" alt="Product icon">
-          </div>
-          <div class="articulo-body">
-            <sub>ID de art. #{{articulo.idArticulo}}</sub>
-            <div class="descripcion-articulo">
-              <h6>{{articulo.descripcion}}</h6>
-            </div>
-            <div class="comprar-section">
-              <p>{{articulo.precioVenta | currency: 'USD' : 'symbol'}}</p>
-            </div>
-          </div>
-        </div>
-      }
-    }
+<div class="listado-articulos-container">
+  <div class="listado-header">
+    <h2>Articulos inactivos</h2>
+    <p>
+      Estos artículos fueron inhabilitados para la compra, o fueron eliminados
+    </p>
   </div>
-  <div class="listado-articulos-container">
-    <div class="listado-header">
-      <h2>Articulo sin stock</h2>
-      <p>Los siguientes artículos están cargados en el sistema, pero no contamos con un lote del mismo</p>
+  @for (articulo of articulos; track $index) { @if(articulo.activo == false) {
+  <div class="articulo-item desactivado">
+    <div class="articulo-header">
+      <img src="./assets/broken_box.png" alt="Product icon" />
     </div>
-    @for (articulo of articulos; track $index) {
-      @if(articulo.estaEnUnLote == false){
-        <div class="articulo-item desactivado">
-          <div class="articulo-header">
-            <img src="./assets/empty_box.png" alt="Product icon">
-          </div>
-          <div class="articulo-body">
-            <sub>ID de art. #{{articulo.idArticulo}}</sub>
-            <div class="descripcion-articulo">
-              <h6>{{articulo.descripcion}}</h6>
-            </div>
-            <div class="comprar-section">
-              <p>{{articulo.precioVenta | currency: 'USD' : 'symbol'}}</p>
-            </div>
-          </div>
-        </div>
-      }
-    }
+    <div class="articulo-body">
+      <sub>ID de art. #{{ articulo.idArticulo }}</sub>
+      <div class="descripcion-articulo">
+        <h6>{{ articulo.descripcion }}</h6>
+      </div>
+      <div class="comprar-section">
+        <p>{{ articulo.precioVenta | currency : "USD" : "symbol" }}</p>
+      </div>
+    </div>
   </div>
+  } }
+</div>
+<div class="listado-articulos-container">
+  <div class="listado-header">
+    <h2>Articulo sin stock</h2>
+    <p>
+      Los siguientes artículos están cargados en el sistema, pero no contamos
+      con un lote del mismo
+    </p>
+  </div>
+  @for (articulo of articulos; track $index) { @if(articulo.estaEnUnLote ==
+  false && articulo.activo != false){
+  <div class="articulo-item desactivado">
+    <div class="articulo-header">
+      <img src="./assets/empty_box.png" alt="Product icon" />
+    </div>
+    <div class="articulo-body">
+      <sub>ID de art. #{{ articulo.idArticulo }}</sub>
+      <div class="descripcion-articulo">
+        <h6>{{ articulo.descripcion }}</h6>
+      </div>
+      <div class="comprar-section">
+        <p>{{ articulo.precioVenta | currency : "USD" : "symbol" }}</p>
+      </div>
+    </div>
+  </div>
+  } }
+</div>
 }

@@ -50,7 +50,7 @@
   font-size: 14px;
   border-radius: 2px;
   font-weight: 600;
-  color:#fff;
+  color: #fff;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -89,7 +89,7 @@
   flex-grow: 1;
 }
 
-.articulo-item .desactivado{
+.articulo-item .desactivado {
   height: 300px;
 }
 
@@ -121,7 +121,8 @@
   margin-right: 5px;
 }
 
-.comprar-section .envio-section sub, .comprar-section .envio-section i {
+.comprar-section .envio-section sub,
+.comprar-section .envio-section i {
   color: #47883d;
   font-weight: 600;
 }
@@ -135,7 +136,7 @@ button.buy-button {
   font-size: 18px;
   border-radius: 2px;
   font-weight: 600;
-  color:#815d0b;
+  color: #815d0b;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -143,7 +144,6 @@ button.buy-button {
 button.buy-button:hover {
   background: #d1a53d;
 }
-
 
 sub {
   font-weight: 600;
@@ -159,7 +159,7 @@ sub {
   font-size: 18px;
   border-radius: 2px;
   font-weight: 600;
-  color:#555;
+  color: #555;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -177,7 +177,7 @@ sub {
   font-size: 18px;
   border-radius: 2px;
   font-weight: 600;
-  color:#e12626;
+  color: #e12626;
   border-radius: 3px;
   cursor: pointer;
 }

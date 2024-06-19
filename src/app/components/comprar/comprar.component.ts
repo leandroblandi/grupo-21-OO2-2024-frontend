@@ -14,9 +14,9 @@ import { UsuarioService } from '../../core/services/usuario.service';
   standalone: true,
   imports: [CurrencyPipe, RouterModule],
   templateUrl: './comprar.component.html',
-  styleUrl: './comprar.component.css'
+  styleUrl: './comprar.component.css',
 })
-export class ComprarComponent implements OnInit{
+export class ComprarComponent implements OnInit {
   articulos: Articulo[] = [];
   idsArticulos: number[] = [];
   articulosSelected: Articulo[] = [];
@@ -32,20 +32,23 @@ export class ComprarComponent implements OnInit{
     private toast: ToastrService,
     private router: Router,
     private title: Title
-  ) { }
-
+  ) {}
 
   ngOnInit() {
-    if(localStorage.getItem("articulos")
-    && localStorage.getItem("articulos_en_carrito")) {
-      this.articulos = JSON.parse(localStorage.getItem("articulos")!);
-      this.idsArticulos = JSON.parse(localStorage.getItem("articulos_en_carrito")!);
+    if (
+      localStorage.getItem('articulos') &&
+      localStorage.getItem('articulos_en_carrito')
+    ) {
+      this.articulos = JSON.parse(localStorage.getItem('articulos')!);
+      this.idsArticulos = JSON.parse(
+        localStorage.getItem('articulos_en_carrito')!
+      );
       this.itemsDto = this.getItemDtoByIds(this.idsArticulos);
       this.sumaTotal = this.calcularTotalItems();
     } else {
       this.verificarItems();
     }
-    this.title.setTitle("Hastock :: Carrito de compra");
+    this.title.setTitle('Hastock :: Carrito de compra');
     this.obtenerUsuario();
   }
 
@@ -53,12 +56,12 @@ export class ComprarComponent implements OnInit{
     const articulos: Articulo[] = this.getArticulosByIds(ids);
     const dtos: ItemDto[] = [];
 
-    for(let articulo of articulos) {
+    for (let articulo of articulos) {
       dtos.push({
         id: articulo.idArticulo,
         descripcion: articulo.descripcion,
         cantidad: 1,
-        precio: articulo.precioVenta
+        precio: articulo.precioVenta,
       });
     }
 
@@ -67,9 +70,11 @@ export class ComprarComponent implements OnInit{
 
   getArticulosByIds(ids: number[]) {
     const articulos: Articulo[] = [];
-    for(let id of ids) {
-      let artBuscar: Articulo | undefined = this.articulos.find(a => a.idArticulo == id);
-      if(artBuscar) {
+    for (let id of ids) {
+      let artBuscar: Articulo | undefined = this.articulos.find(
+        (a) => a.idArticulo == id
+      );
+      if (artBuscar) {
         articulos.push(artBuscar);
       }
     }
@@ -79,90 +84,93 @@ export class ComprarComponent implements OnInit{
   sumarCantidadItem(item: ItemDto) {
     let indice = this.itemsDto.indexOf(item);
 
-    if(indice != -1) {
+    if (indice != -1) {
       let itemModificado = item;
       itemModificado.cantidad = itemModificado.cantidad + 1;
-      this.itemsDto[indice] = itemModificado
+      this.itemsDto[indice] = itemModificado;
       this.sumaTotal += item.precio;
     }
   }
 
   restarCantidadItem(item: ItemDto) {
-    console.log("", item);
+    console.log('', item);
 
     let indice = this.itemsDto.indexOf(item);
 
-    if(indice != -1 && item.cantidad > 1) {
+    if (indice != -1 && item.cantidad > 1) {
       let itemModificado = item;
       itemModificado.cantidad = itemModificado.cantidad - 1;
-      this.itemsDto[indice] = itemModificado
+      this.itemsDto[indice] = itemModificado;
       this.sumaTotal -= item.precio;
     }
-
   }
 
   realizarCompra() {
-
     let itemsCompra = [];
 
-    for(let item of this.itemsDto){
+    for (let item of this.itemsDto) {
       itemsCompra.push({
         idArticulo: item.id,
-        cantidad: item.cantidad
+        cantidad: item.cantidad,
       });
     }
 
     let ventaDto = {
       fecha: new Date(),
       items: itemsCompra,
-      idUsuario: this.idUsuario
-    }
+      idUsuario: this.idUsuario,
+    };
 
     this.ventaService.generarVenta(ventaDto).subscribe({
       next: (respuesta) => {
-        this.toast.success("Compra realizada con exito", "Compra Lista");
-        this.router.navigate(["/articulos"]);
-        localStorage.removeItem("articulos_en_carrito");
-        localStorage.removeItem("articulos");
-      },error:(mensajeError) =>{
-        this.toast.error("Hubo un error al realizar la compra", "Error");
-      }
+        this.toast.success('Compra realizada con exito', 'Compra Lista');
+        this.router.navigate(['/articulos']);
+        localStorage.removeItem('articulos_en_carrito');
+        localStorage.removeItem('articulos');
+      },
+      error: (mensajeError) => {
+        this.toast.error('Hubo un error al realizar la compra', 'Error');
+      },
     });
-
   }
 
   obtenerUsuario() {
-    let usuario = localStorage.getItem("usuario")!;
+    let usuario = localStorage.getItem('usuario')!;
 
     this.usuarioService.getUsuario(usuario).subscribe({
       next: (usuarioObtenido) => {
-
         this.idUsuario = usuarioObtenido.idUsuario;
-      },error:(mensajeError) => {
-        this.toast.error("Hubo un error al obtener el usuario", "Error");
-      }
-
+      },
+      error: (mensajeError) => {
+        this.toast.error('Hubo un error al obtener el usuario', 'Error');
+      },
     });
   }
 
-
   verificarItems() {
-    if(this.idsArticulos.length == 0
-      || !localStorage.getItem("articulos")
-      || !localStorage.getItem("articulos_en_carrito")
+    if (
+      this.idsArticulos.length == 0 ||
+      !localStorage.getItem('articulos') ||
+      !localStorage.getItem('articulos_en_carrito')
     ) {
-      this.toast.error("No hay items en el carrito para realizar la compra", "¡Oops!");
-      this.router.navigate(["/articulos"]);
+      this.toast.error(
+        'No hay items en el carrito para realizar la compra',
+        '¡Oops!'
+      );
+      this.router.navigate(['/articulos']);
     }
   }
 
   eliminarItem(item: ItemDto) {
-    this.idsArticulos = this.idsArticulos.filter(id => id != item.id);
-    localStorage.setItem("articulos_en_carrito", JSON.stringify(this.idsArticulos));
-    this.itemsDto = this.itemsDto.filter(i => i.id != item.id);
+    this.idsArticulos = this.idsArticulos.filter((id) => id != item.id);
+    localStorage.setItem(
+      'articulos_en_carrito',
+      JSON.stringify(this.idsArticulos)
+    );
+    this.itemsDto = this.itemsDto.filter((i) => i.id != item.id);
 
-    if(this.idsArticulos.length == 0) {
-      localStorage.removeItem("articulos_en_carrito");
+    if (this.idsArticulos.length == 0) {
+      localStorage.removeItem('articulos_en_carrito');
     }
 
     this.verificarItems();
@@ -171,7 +179,7 @@ export class ComprarComponent implements OnInit{
   calcularTotalItems() {
     let sumaTotal: number = 0;
 
-    for(let item of this.itemsDto) {
+    for (let item of this.itemsDto) {
       sumaTotal += item.precio;
     }
 

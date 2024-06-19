@@ -9,23 +9,22 @@ import { Title } from '@angular/platform-browser';
   standalone: true,
   imports: [],
   templateUrl: './listado-clientes.component.html',
-  styleUrl: './listado-clientes.component.css'
+  styleUrl: './listado-clientes.component.css',
 })
 export class ListadoClientesComponent implements OnInit {
-
   usuarios: Usuario[] = [];
   ningunUsuarioActivo: boolean = true;
-  
+
   constructor(
     private usuarioService: UsuarioService,
     private toast: ToastrService,
     private title: Title
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getUsuarios();
     this.actualizarListClientes();
-    this.title.setTitle("Hastock :: Clientes");
+    this.title.setTitle('Hastock :: Clientes');
   }
 
   getUsuarios(): void {
@@ -34,22 +33,23 @@ export class ListadoClientesComponent implements OnInit {
         console.log(res);
         this.usuarios = this.filtrarClientes(res);
         this.actualizarListClientes();
-      }, error: (err) => {
+      },
+      error: (err) => {
         console.log(err);
-        this.toast.error("Hubo un error al obtener los clientes", "¡Oops!")
-      }
+        this.toast.error('Hubo un error al obtener los clientes', '¡Oops!');
+      },
     });
   }
 
   filtrarClientes(usuarios: Usuario[]) {
-    return usuarios.filter((usuario: any) => usuario.rol.rol == "ROLE_CLIENTE");
+    return usuarios.filter((usuario: any) => usuario.rol.rol == 'ROLE_CLIENTE');
   }
 
   actualizarListClientes(): void {
     let algunUsuarioActivo: boolean = false;
-    
-    for(let usuario of this.usuarios) {
-      if(usuario.activo) {
+
+    for (let usuario of this.usuarios) {
+      if (usuario.activo) {
         algunUsuarioActivo = true;
       }
     }

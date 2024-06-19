@@ -7,25 +7,30 @@
   </div>
   <div class="comprar-header">
     <h2>Carrito</h2>
-    <p>Para continuar con la compra, verifica que tanto las cantidades como los artículos estén bien</p>
+    <p>
+      Para continuar con la compra, verifica que tanto las cantidades como los
+      artículos estén bien
+    </p>
   </div>
   <div class="items-section">
     @for (itemDto of itemsDto; track $index) {
-      <div class="item-section">
-        <div class="left-section">
-          <h6>{{itemDto.descripcion}}</h6>
-        </div>
-        <div class="right-section">
-          <p>{{itemDto.cantidad}}</p>
-          <button (click)="sumarCantidadItem(itemDto)" class="sumar-cant">
-            <i class="fa-solid fa-plus"></i>
-          </button>
-          <button (click)="restarCantidadItem(itemDto)" class="restar-cant">
-            <i class="fa-solid fa-minus"></i>
-          </button>
-          <sub class="elminar-item" (click)="eliminarItem(itemDto)">Eliminar ítem</sub>
-        </div>
+    <div class="item-section">
+      <div class="left-section">
+        <h6>{{ itemDto.descripcion }}</h6>
       </div>
+      <div class="right-section">
+        <p>{{ itemDto.cantidad }}</p>
+        <button (click)="sumarCantidadItem(itemDto)" class="sumar-cant">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button (click)="restarCantidadItem(itemDto)" class="restar-cant">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <sub class="elminar-item" (click)="eliminarItem(itemDto)"
+          >Eliminar ítem</sub
+        >
+      </div>
+    </div>
     }
   </div>
   <div class="informacion-sobre-la-compra-section">
@@ -36,14 +41,14 @@
     <div class="compra-info-section">
       <i class="fa-solid fa-calendar-check"></i>
       @if(horaHoy >= 13) {
-        <sub>Llega mañana</sub>
+      <sub>Llega mañana</sub>
       } @else {
-        <sub>Llega hoy</sub>
+      <sub>Llega hoy</sub>
       }
     </div>
   </div>
   <div class="confirmar-compra-section">
-    <p class="total">{{sumaTotal | currency: "USD": "symbol"}}</p>
+    <p class="total">{{ sumaTotal | currency : "USD" : "symbol" }}</p>
     <button (click)="realizarCompra()">Realizar compra</button>
   </div>
 </div>

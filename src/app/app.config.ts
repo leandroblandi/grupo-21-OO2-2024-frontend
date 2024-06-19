@@ -11,15 +11,17 @@ import { tokenInterceptor } from './core/interceptors/token.interceptor';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), 
-    provideHttpClient(withInterceptors([
-      tokenInterceptor,
-      authInterceptor
-    ])),
-    importProvidersFrom(JwtModule.forRoot({
-      config: {
-        tokenGetter: () => localStorage.getItem("token")
-      }
-    })), provideToastr(), provideAnimations(),
-  ]
+  providers: [
+    provideRouter(routes),
+    provideHttpClient(withInterceptors([tokenInterceptor, authInterceptor])),
+    importProvidersFrom(
+      JwtModule.forRoot({
+        config: {
+          tokenGetter: () => localStorage.getItem('token'),
+        },
+      })
+    ),
+    provideToastr(),
+    provideAnimations(),
+  ],
 };

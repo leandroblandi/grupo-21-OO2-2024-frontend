@@ -46,7 +46,7 @@
   font-size: 14px;
   border-radius: 2px;
   font-weight: 600;
-  color:#fff;
+  color: #fff;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -117,7 +117,7 @@ button.aprovisionar-button {
   font-size: 18px;
   border-radius: 2px;
   font-weight: 600;
-  color:#ffffff;
+  color: #ffffff;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -131,7 +131,7 @@ button.aprovisionar-button-disabled {
   font-size: 18px;
   border-radius: 2px;
   font-weight: 600;
-  color:#ffffff;
+  color: #ffffff;
   border-radius: 3px;
   cursor: not-allowed;
 }
@@ -148,7 +148,6 @@ button.aprovisionar-button-disabled:hover {
 button.aprovisionar-button:hover {
   background: #1859a4;
 }
- 
 
 sub {
   font-weight: 600;
@@ -169,7 +168,7 @@ sub {
   font-size: 18px;
   border-radius: 2px;
   font-weight: 600;
-  color:#555;
+  color: #555;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -187,7 +186,7 @@ sub {
   font-size: 18px;
   border-radius: 2px;
   font-weight: 600;
-  color:#db1f1f;
+  color: #db1f1f;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -261,11 +260,11 @@ sub {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.aprov-sect-header p{
+.aprov-sect-header p {
   font-size: 18px;
 }
 
-.close-button button{
+.close-button button {
   width: 30px;
   height: 30px;
   border-radius: 100%;
@@ -277,15 +276,15 @@ sub {
   cursor: pointer;
 }
 
-.close-button button:hover{
+.close-button button:hover {
   background: #b0b0b0;
 }
 
-.close-button button i{
+.close-button button i {
   font-size: 15px;
 }
 
-.aprovisionamiento-section .form-control{
+.aprovisionamiento-section .form-control {
   display: flex;
   margin-top: 10px;
   flex-direction: column;
@@ -301,7 +300,7 @@ sub {
   font-size: 18px;
   border-radius: 2px;
   font-weight: 600;
-  color:#ffffff;
+  color: #ffffff;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -309,5 +308,3 @@ sub {
 .aprovisionamiento-section .form-control button:hover {
   background: #1859a4;
 }
-
-

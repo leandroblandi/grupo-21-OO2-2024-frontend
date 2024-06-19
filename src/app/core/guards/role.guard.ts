@@ -11,13 +11,11 @@ export const RoleGuard: CanActivateFn = (route, state) => {
   const rol: string = loginService.getRolUsuario().authority;
   const requiredRol: string = route.data['rol'] as string;
 
-  if(rol == requiredRol) {
+  if (rol == requiredRol) {
     return true;
-  }
-  else {
+  } else {
     toast.error('No tienes permiso acceder a esta sección', '¡Oops!');
     router.navigate(['/articulos']);
     return false;
   }
 };
-

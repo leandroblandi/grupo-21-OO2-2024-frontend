@@ -13,82 +13,81 @@ import { EditarArticuloComponent } from './components/editar-articulo/editar-art
 import { ComprarComponent } from './components/comprar/comprar.component';
 import { MisComprasComponent } from './components/mis-compras/mis-compras.component';
 
-const rolAdministrador: string = "ROLE_ADMINISTRADOR";
-const rolCliente: string = "ROLE_CLIENTE";
+const rolAdministrador: string = 'ROLE_ADMINISTRADOR';
+const rolCliente: string = 'ROLE_CLIENTE';
 
 export const routes: Routes = [
-
   {
-    path: "",
-    pathMatch: "full",
-    redirectTo: "iniciar-sesion"
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'iniciar-sesion',
   },
   {
-    path: "iniciar-sesion",
+    path: 'iniciar-sesion',
     component: LoginComponent,
-    canActivate: [LoginGuard]
+    canActivate: [LoginGuard],
   },
   {
-    path: "registrarse",
+    path: 'registrarse',
     component: RegisterComponent,
-    canActivate: [LoginGuard]
+    canActivate: [LoginGuard],
   },
   {
-    path: "lotes",
+    path: 'lotes',
     component: ListadoLotesComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
-      rol: rolAdministrador
-    }
+      rol: rolAdministrador,
+    },
   },
   {
-    path: "alta-lote",
+    path: 'alta-lote',
     component: AltaLoteComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
-      rol: rolAdministrador
-    }
+      rol: rolAdministrador,
+    },
   },
   {
-    path: "articulos",
+    path: 'articulos',
     component: ListadoArticulosComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
-    path: "alta-articulo",
+    path: 'alta-articulo',
     component: AltaArticuloComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
-      rol: rolAdministrador
-    }
+      rol: rolAdministrador,
+    },
   },
   {
-    path: "editar-articulo/:id",
+    path: 'editar-articulo/:id',
     component: EditarArticuloComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
-      rol: rolAdministrador
-    }
+      rol: rolAdministrador,
+    },
   },
   {
-    path: "carrito",
+    path: 'carrito',
     component: ComprarComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
-    path: "clientes",
+    path: 'clientes',
     component: ListadoClientesComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
-      rol: rolAdministrador
-    }
+      rol: rolAdministrador,
+    },
   },
-{
-  path: "mis-compras",
-  component: MisComprasComponent,
-  canActivate: [AuthGuard, RoleGuard],
-  data: {
-      rol: rolCliente
-  }
-}
+  {
+    path: 'mis-compras',
+    component: MisComprasComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      rol: rolCliente,
+    },
+  },
 ];

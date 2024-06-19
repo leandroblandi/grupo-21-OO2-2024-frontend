@@ -7,17 +7,35 @@
     <div class="form-control">
       <label class="label" for="descripcion">Descripción del artículo</label>
       <sub>Intenta describirlo de manera concisa pero descriptiva</sub>
-      <input [(ngModel)]="descripcion" type="descripcion" placeholder="iPhone 15 Pro Max 512 GB White" name="descripcion" required>
+      <input
+        [(ngModel)]="descripcion"
+        type="descripcion"
+        placeholder="iPhone 15 Pro Max 512 GB White"
+        name="descripcion"
+        required
+      />
     </div>
     <div class="form-control">
       <label class="label" for="costo">Costo</label>
       <sub>Ingresa el precio que le costó a la empresa el artículo</sub>
-      <input [(ngModel)]="costo" type="number" placeholder="1,000.00" name="costo" required>
+      <input
+        [(ngModel)]="costo"
+        type="number"
+        placeholder="1,000.00"
+        name="costo"
+        required
+      />
     </div>
     <div class="form-control">
       <label class="label" for="precio-venta">Precio de venta</label>
       <sub>Ingresa el precio para los clientes</sub>
-      <input [(ngModel)]="precioVenta" type="number" placeholder="1,760.00" name="precio-venta" required>
+      <input
+        [(ngModel)]="precioVenta"
+        type="number"
+        placeholder="1,760.00"
+        name="precio-venta"
+        required
+      />
     </div>
     <div class="form-control">
       <button type="button" (click)="editarArticulo()">Confirmar</button>

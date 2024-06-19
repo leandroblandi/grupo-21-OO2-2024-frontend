@@ -82,7 +82,8 @@
   border-radius: 5px;
 }
 
-.advice-section sub, i {
+.advice-section sub,
+i {
   font-weight: 600;
   color: #563e12;
   font-size: 18px;

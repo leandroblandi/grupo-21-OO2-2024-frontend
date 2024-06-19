@@ -42,7 +42,6 @@
   color: #777;
 }
 
-
 .alta-lote-container .alta-lote-form {
   width: 30%;
 }
@@ -65,7 +64,8 @@
   color: #87857e;
 }
 
-.form-control input, .form-control select {
+.form-control input,
+.form-control select {
   margin-top: 5px;
   border: 1px solid #bdbdbd;
   border-radius: 5px;
@@ -131,6 +131,7 @@ select:disabled {
   background: transparent;
 }
 
-select:disabled, input:disabled {
+select:disabled,
+input:disabled {
   cursor: not-allowed;
 }
