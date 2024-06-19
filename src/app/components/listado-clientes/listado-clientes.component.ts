@@ -55,4 +55,16 @@ export class ListadoClientesComponent implements OnInit {
     }
     this.ningunUsuarioActivo = !algunUsuarioActivo;
   }
+
+  eliminarUsuario(idUsuario: number){
+    this.usuarioService.eliminarUsuario(idUsuario).subscribe({
+      next: (eliminadoConExito) =>{
+        this.toast.success("El Cliente se elimino con exito", "Cliente eliminado");
+        this.getUsuarios();    
+      }, 
+      error: (err) => {
+        this.toast.error('Hubo un error al eliminar el clientes', '¡Oops!');
+      } 
+    })
+  }
 }

@@ -34,7 +34,7 @@
           <td class="dni">{{ usuario.dni }}</td>
           <td class="usuario">{{ usuario.usuario }}</td>
           <td class="accion">
-            <button class="eliminar-cliente">Eliminar</button>
+            <button class="eliminar-cliente" (click)="eliminarUsuario(usuario.idUsuario)">Eliminar</button>
           </td>
         </tr>
         } }

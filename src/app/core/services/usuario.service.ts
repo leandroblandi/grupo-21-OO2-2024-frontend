@@ -23,4 +23,11 @@ export class UsuarioService {
       this.url + this.prefix + this.usuarios + '/usuario?usuario=' + usuario
     );
   }
+
+  eliminarUsuario(idUsuario: number): Observable<Usuario>{
+    return this.http.delete<Usuario>(
+      this.url + this.prefix + this.usuarios + '/' + idUsuario
+    );
+  }
+
 }
