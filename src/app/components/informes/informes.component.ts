@@ -68,7 +68,7 @@ export class InformesComponent implements OnInit {
   }
 
   getTotalVentas(): void{
-    this.informeService.getTotalClientes().subscribe({
+    this.informeService.getTotalVentas().subscribe({
       next: (res) => {
         this.totalVentas = res;
 
